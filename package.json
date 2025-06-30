@@ -9,8 +9,8 @@
     "test:headless": "cypress run --headless",
     "test:chrome": "cypress run --browser chrome",
     "test:report": "cypress run --reporter mochawesome",
-    "report:merge": "mochawesome-merge cypress/reports/*.json > cypress/reports/output.json",
-    "report:generate": "marge cypress/reports/output.json -f report -o cypress/reports",
+    "report:merge": "npx mochawesome-merge cypress/reports/*.json > cypress/reports/output.json",
+    "report:generate": "npx marge cypress/reports/output.json -f report -o cypress/reports",
     "report:full": "npm run test:report && npm run report:merge && npm run report:generate",
     "clean:reports": "rimraf cypress/reports/*.json cypress/reports/*.html"
   },
