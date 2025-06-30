@@ -22,11 +22,14 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Run Cypress tests
-        uses: cypress-io/github-action@v6
-        with:
-          browser: chrome
-          record: false
+      - name: Run Cypress tests with reporting
+        run: npm run test:report
+
+      - name: Generate HTML report
+        run: |
+          npm run report:merge
+          npm run report:generate
+        if: always()
 
       - name: Upload screenshots
         uses: actions/upload-artifact@v4
@@ -42,4 +45,12 @@ jobs:
         with:
           name: cypress-videos
           path: cypress/videos
+          if-no-files-found: ignore
+
+      - name: Upload HTML report
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: cypress-html-report
+          path: cypress/reports/
           if-no-files-found: ignore 

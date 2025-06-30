@@ -15,3 +15,12 @@
 
 // Import commands.js using ES2015 syntax:
 import './commands'
+
+// Alternatively you can use CommonJS syntax:
+// require('./commands')
+
+// Configure Mochawesome reporter
+Cypress.on('test:after:run', (attributes) => {
+  // This will run after each test
+  console.log('Test completed:', attributes.title, attributes.state)
+})
