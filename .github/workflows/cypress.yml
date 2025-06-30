@@ -22,8 +22,8 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Run Cypress tests with reporting
-        run: npm run test:report
+      - name: Run Cypress tests with reporting and record to Cypress Cloud
+        run: npm run test:report -- --record --key ${{ secrets.CYPRESS_RECORD_KEY }}
 
       - name: Generate HTML report
         run: |

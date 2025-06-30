@@ -1,6 +1,7 @@
 const { defineConfig } = require("cypress");
 
 module.exports = defineConfig({
+  projectId: '0514daf3-b043-4cf4-bd32-10912d722591',
   e2e: {
     specPattern: 'cypress/e2e/**/*.cy.{js,jsx,ts,tsx}',
     baseUrl: 'https://careers.qualitestgroup.com',
