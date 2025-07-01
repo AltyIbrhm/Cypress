@@ -22,14 +22,13 @@ jobs:
       - name: Install dependencies
         run: npm install
 
-      - name: Install Cypress explicitly
-        run: npx cypress install
-
       - name: Ensure reports directory exists
         run: mkdir -p cypress/reports
 
       - name: Run Component tests
-        run: npm run test:component:report
+        uses: cypress-io/github-action@v6
+        with:
+          command: npm run test:component:report
 
       - name: Generate Component HTML report
         run: |

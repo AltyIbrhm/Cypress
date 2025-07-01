@@ -22,14 +22,13 @@ jobs:
       - name: Install dependencies
         run: npm install
 
-      - name: Install Cypress explicitly
-        run: npx cypress install
-
       - name: Ensure reports directory exists
         run: mkdir -p cypress/reports
 
       - name: Run E2E Cypress tests with reporting and record to Cypress Cloud
-        run: npm run test:report -- --record --key ${{ secrets.CYPRESS_RECORD_KEY }}
+        uses: cypress-io/github-action@v6
+        with:
+          command: npm run test:report -- --record --key ${{ secrets.CYPRESS_RECORD_KEY }}
 
       - name: Generate HTML report
         run: |
