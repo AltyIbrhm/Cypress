@@ -36,7 +36,7 @@ jobs:
       - name: Run Component tests
         uses: cypress-io/github-action@v6
         with:
-          command: npm run test:component:report
+          command: npm run test:component:report -- --record --key ${{ secrets.CYPRESS_RECORD_KEY }}
 
       - name: Generate Component HTML report
         run: |
