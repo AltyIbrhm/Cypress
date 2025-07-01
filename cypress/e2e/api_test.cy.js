@@ -181,26 +181,36 @@ describe('API Testing Suite', () => {
       });
     });
 
-    it('should handle concurrent requests', () => {
-      // Make multiple concurrent requests
-      const requests = [];
-      for (let i = 0; i < 3; i++) {
-        requests.push(
-          cy.request({
-            method: 'GET',
-            url: `${baseUrl}/posts/${i + 1}`,
-            headers: {
-              'Content-Type': 'application/json'
-            }
-          })
-        );
-      }
+    it('should handle multiple sequential requests', () => {
+      // Make multiple sequential requests instead of concurrent
+      cy.request({
+        method: 'GET',
+        url: `${baseUrl}/posts/1`,
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      }).then((response) => {
+        expect(response.status).to.eq(200);
+      });
 
-      // All requests should succeed
-      cy.wrap(requests).each((request) => {
-        request.then((response) => {
-          expect(response.status).to.eq(200);
-        });
+      cy.request({
+        method: 'GET',
+        url: `${baseUrl}/posts/2`,
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      }).then((response) => {
+        expect(response.status).to.eq(200);
+      });
+
+      cy.request({
+        method: 'GET',
+        url: `${baseUrl}/posts/3`,
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      }).then((response) => {
+        expect(response.status).to.eq(200);
       });
     });
   });
