@@ -1,0 +1,400 @@
+{
+  "stats": {
+    "suites": 5,
+    "tests": 10,
+    "passes": 0,
+    "pending": 0,
+    "failures": 10,
+    "start": "2025-07-01T00:42:57.629Z",
+    "end": "2025-07-01T00:43:04.250Z",
+    "duration": 6621,
+    "testsRegistered": 10,
+    "passPercent": 0,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "2712286b-8e6a-4b77-b639-10106e7c6bea",
+      "title": "",
+      "fullFile": "cypress\\e2e\\api_test.cy.js",
+      "file": "cypress\\e2e\\api_test.cy.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "33678a49-afeb-43b7-8b7d-14183d6a6bdf",
+          "title": "API Testing Suite",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [],
+          "suites": [
+            {
+              "uuid": "2df5fd1d-c886-4beb-bd1b-c23ff72fafbd",
+              "title": "REST API Tests",
+              "fullFile": "",
+              "file": "",
+              "beforeHooks": [],
+              "afterHooks": [],
+              "tests": [
+                {
+                  "title": "should GET jobs list successfully",
+                  "fullTitle": "API Testing Suite REST API Tests should GET jobs list successfully",
+                  "timedOut": null,
+                  "duration": 732,
+                  "state": "failed",
+                  "speed": null,
+                  "pass": false,
+                  "fail": true,
+                  "pending": false,
+                  "context": null,
+                  "code": "cy.request({\n  method: 'GET',\n  url: `${baseUrl}/api/jobs`,\n  headers: {\n    'Authorization': `Bearer ${apiKey}`,\n    'Content-Type': 'application/json'\n  }\n}).then(response => {\n  // Assert response status\n  expect(response.status).to.eq(200);\n  // Assert response structure\n  expect(response.body).to.have.property('jobs');\n  expect(response.body.jobs).to.be.an('array');\n  // Assert response data\n  expect(response.body.jobs).to.have.length.greaterThan(0);\n  // Check if our test job exists\n  const automationJob = response.body.jobs.find(job => job.title.includes('Automation'));\n  expect(automationJob).to.exist;\n  expect(automationJob.company).to.eq('Qualitest Group');\n});",
+                  "err": {
+                    "message": "CypressError: `cy.request()` failed trying to load:\n\nhttps://api.qualitestgroup.com/api/jobs\n\nWe attempted to make an http request to this URL but the request failed without a response.\n\nWe received this error at the network level:\n\n  > Error: getaddrinfo ENOTFOUND api.qualitestgroup.com\n\n-----------------------------------------------------------\n\nThe request we sent was:\n\nMethod: GET\nURL: https://api.qualitestgroup.com/api/jobs\n\n-----------------------------------------------------------\n\nCommon situations why this would fail:\n  - you don't have internet access\n  - you forgot to run / boot your web server\n  - your web server isn't accessible\n  - you have weird network configuration settings on your computer\n\nhttps://on.cypress.io/request",
+                    "estack": "CypressError: `cy.request()` failed trying to load:\n\nhttps://api.qualitestgroup.com/api/jobs\n\nWe attempted to make an http request to this URL but the request failed without a response.\n\nWe received this error at the network level:\n\n  > Error: getaddrinfo ENOTFOUND api.qualitestgroup.com\n\n-----------------------------------------------------------\n\nThe request we sent was:\n\nMethod: GET\nURL: https://api.qualitestgroup.com/api/jobs\n\n-----------------------------------------------------------\n\nCommon situations why this would fail:\n  - you don't have internet access\n  - you forgot to run / boot your web server\n  - your web server isn't accessible\n  - you have weird network configuration settings on your computer\n\nhttps://on.cypress.io/request\n    at <unknown> (https://careers.qualitestgroup.com/__cypress/runner/cypress_runner.js:132904:70)\n    at tryCatcher (https://careers.qualitestgroup.com/__cypress/runner/cypress_runner.js:1830:23)\n    at <unknown> (https://careers.qualitestgroup.com/__cypress/runner/cypress_runner.js:4226:37)\n    at tryCatcher (https://careers.qualitestgroup.com/__cypress/runner/cypress_runner.js:1830:23)\n    at Promise._settlePromiseFromHandler (https://careers.qualitestgroup.com/__cypress/runner/cypress_runner.js:1542:31)\n    at Promise._settlePromise (https://careers.qualitestgroup.com/__cypress/runner/cypress_runner.js:1599:18)\n    at Promise._settlePromise0 (https://careers.qualitestgroup.com/__cypress/runner/cypress_runner.js:1644:10)\n    at Promise._settlePromises (https://careers.qualitestgroup.com/__cypress/runner/cypress_runner.js:1720:18)\n    at _drainQueueStep (https://careers.qualitestgroup.com/__cypress/runner/cypress_runner.js:2430:12)\n    at _drainQueue (https://careers.qualitestgroup.com/__cypress/runner/cypress_runner.js:2423:9)\n    at Async._drainQueues (https://careers.qualitestgroup.com/__cypress/runner/cypress_runner.js:2439:5)\n    at Async.drainQueues (https://careers.qualitestgroup.com/__cypress/runner/cypress_runner.js:2309:14)\nFrom Your Spec Code:\n    at Context.eval (webpack://cypress/./cypress/e2e/api_test.cy.js:15:9)\n\nFrom Node.js Internals:\n  RequestError: Error: getaddrinfo ENOTFOUND api.qualitestgroup.com\n      at new r (<embedded>:227:405020)\n      at ee.callback (<embedded>:227:411021)\n      at e.callback.s.callback [as _callback] (<embedded>:227:410467)\n      at s._callback.s.callback.s.callback (<embedded>:290:100275)\n      at ee.emit (node:events:514:28)\n      at ee.onRequestError (<embedded>:290:109217)\n      at ClientRequest.emit (node:events:526:35)\n      at TLSSocket.socketErrorListener (node:_http_client:501:9)\n      at TLSSocket.emit (node:events:514:28)\n      at emitErrorNT (node:internal/streams/destroy:151:8)\n      at emitErrorCloseNT (node:internal/streams/destroy:116:3)\n      at process.processTicksAndRejections (node:internal/process/task_queues:82:21)",
+                    "diff": null
+                  },
+                  "uuid": "4fa3ab97-7259-44c9-a8bc-9b283f0a90b5",
+                  "parentUUID": "2df5fd1d-c886-4beb-bd1b-c23ff72fafbd",
+                  "isHook": false,
+                  "skipped": false
+                },
+                {
+                  "title": "should GET specific job by ID",
+                  "fullTitle": "API Testing Suite REST API Tests should GET specific job by ID",
+                  "timedOut": null,
+                  "duration": 633,
+                  "state": "failed",
+                  "speed": null,
+                  "pass": false,
+                  "fail": true,
+                  "pending": false,
+                  "context": null,
+                  "code": "const jobId = '39414944'; // From your E2E tests\ncy.request({\n  method: 'GET',\n  url: `${baseUrl}/api/jobs/${jobId}`,\n  headers: {\n    'Authorization': `Bearer ${apiKey}`,\n    'Content-Type': 'application/json'\n  }\n}).then(response => {\n  expect(response.status).to.eq(200);\n  expect(response.body).to.have.property('id', jobId);\n  expect(response.body).to.have.property('title');\n  expect(response.body).to.have.property('company');\n  expect(response.body.company).to.eq('Qualitest Group');\n});",
+                  "err": {
+                    "message": "CypressError: `cy.request()` failed trying to load:\n\nhttps://api.qualitestgroup.com/api/jobs/39414944\n\nWe attempted to make an http request to this URL but the request failed without a response.\n\nWe received this error at the network level:\n\n  > Error: getaddrinfo ENOTFOUND api.qualitestgroup.com\n\n-----------------------------------------------------------\n\nThe request we sent was:\n\nMethod: GET\nURL: https://api.qualitestgroup.com/api/jobs/39414944\n\n-----------------------------------------------------------\n\nCommon situations why this would fail:\n  - you don't have internet access\n  - you forgot to run / boot your web server\n  - your web server isn't accessible\n  - you have weird network configuration settings on your computer\n\nhttps://on.cypress.io/request",
+                    "estack": "CypressError: `cy.request()` failed trying to load:\n\nhttps://api.qualitestgroup.com/api/jobs/39414944\n\nWe attempted to make an http request to this URL but the request failed without a response.\n\nWe received this error at the network level:\n\n  > Error: getaddrinfo ENOTFOUND api.qualitestgroup.com\n\n-----------------------------------------------------------\n\nThe request we sent was:\n\nMethod: GET\nURL: https://api.qualitestgroup.com/api/jobs/39414944\n\n-----------------------------------------------------------\n\nCommon situations why this would fail:\n  - you don't have internet access\n  - you forgot to run / boot your web server\n  - your web server isn't accessible\n  - you have weird network configuration settings on your computer\n\nhttps://on.cypress.io/request\n    at <unknown> (https://careers.qualitestgroup.com/__cypress/runner/cypress_runner.js:132904:70)\n    at tryCatcher (https://careers.qualitestgroup.com/__cypress/runner/cypress_runner.js:1830:23)\n    at <unknown> (https://careers.qualitestgroup.com/__cypress/runner/cypress_runner.js:4226:37)\n    at tryCatcher (https://careers.qualitestgroup.com/__cypress/runner/cypress_runner.js:1830:23)\n    at Promise._settlePromiseFromHandler (https://careers.qualitestgroup.com/__cypress/runner/cypress_runner.js:1542:31)\n    at Promise._settlePromise (https://careers.qualitestgroup.com/__cypress/runner/cypress_runner.js:1599:18)\n    at Promise._settlePromise0 (https://careers.qualitestgroup.com/__cypress/runner/cypress_runner.js:1644:10)\n    at Promise._settlePromises (https://careers.qualitestgroup.com/__cypress/runner/cypress_runner.js:1720:18)\n    at _drainQueueStep (https://careers.qualitestgroup.com/__cypress/runner/cypress_runner.js:2430:12)\n    at _drainQueue (https://careers.qualitestgroup.com/__cypress/runner/cypress_runner.js:2423:9)\n    at Async._drainQueues (https://careers.qualitestgroup.com/__cypress/runner/cypress_runner.js:2439:5)\n    at Async.drainQueues (https://careers.qualitestgroup.com/__cypress/runner/cypress_runner.js:2309:14)\nFrom Your Spec Code:\n    at Context.eval (webpack://cypress/./cypress/e2e/api_test.cy.js:45:9)\n\nFrom Node.js Internals:\n  RequestError: Error: getaddrinfo ENOTFOUND api.qualitestgroup.com\n      at new r (<embedded>:227:405020)\n      at ee.callback (<embedded>:227:411021)\n      at e.callback.s.callback [as _callback] (<embedded>:227:410467)\n      at s._callback.s.callback.s.callback (<embedded>:290:100275)\n      at ee.emit (node:events:514:28)\n      at ee.onRequestError (<embedded>:290:109217)\n      at ClientRequest.emit (node:events:526:35)\n      at TLSSocket.socketErrorListener (node:_http_client:501:9)\n      at TLSSocket.emit (node:events:514:28)\n      at emitErrorNT (node:internal/streams/destroy:151:8)\n      at emitErrorCloseNT (node:internal/streams/destroy:116:3)\n      at process.processTicksAndRejections (node:internal/process/task_queues:82:21)",
+                    "diff": null
+                  },
+                  "uuid": "8968d8ab-6426-409e-9ae8-fa51b340d077",
+                  "parentUUID": "2df5fd1d-c886-4beb-bd1b-c23ff72fafbd",
+                  "isHook": false,
+                  "skipped": false
+                },
+                {
+                  "title": "should POST new job application",
+                  "fullTitle": "API Testing Suite REST API Tests should POST new job application",
+                  "timedOut": null,
+                  "duration": 618,
+                  "state": "failed",
+                  "speed": null,
+                  "pass": false,
+                  "fail": true,
+                  "pending": false,
+                  "context": null,
+                  "code": "const applicationData = {\n  jobId: '39414944',\n  candidate: {\n    name: 'Test Candidate',\n    email: 'test@example.com',\n    phone: '+1234567890',\n    resume: 'base64-encoded-resume-data'\n  },\n  coverLetter: 'I am interested in this position...'\n};\ncy.request({\n  method: 'POST',\n  url: `${baseUrl}/api/applications`,\n  headers: {\n    'Authorization': `Bearer ${apiKey}`,\n    'Content-Type': 'application/json'\n  },\n  body: applicationData\n}).then(response => {\n  expect(response.status).to.eq(201);\n  expect(response.body).to.have.property('applicationId');\n  expect(response.body).to.have.property('status', 'submitted');\n  expect(response.body).to.have.property('submittedAt');\n});",
+                  "err": {
+                    "message": "CypressError: `cy.request()` failed trying to load:\n\nhttps://api.qualitestgroup.com/api/applications\n\nWe attempted to make an http request to this URL but the request failed without a response.\n\nWe received this error at the network level:\n\n  > Error: getaddrinfo ENOTFOUND api.qualitestgroup.com\n\n-----------------------------------------------------------\n\nThe request we sent was:\n\nMethod: POST\nURL: https://api.qualitestgroup.com/api/applications\n\n-----------------------------------------------------------\n\nCommon situations why this would fail:\n  - you don't have internet access\n  - you forgot to run / boot your web server\n  - your web server isn't accessible\n  - you have weird network configuration settings on your computer\n\nhttps://on.cypress.io/request",
+                    "estack": "CypressError: `cy.request()` failed trying to load:\n\nhttps://api.qualitestgroup.com/api/applications\n\nWe attempted to make an http request to this URL but the request failed without a response.\n\nWe received this error at the network level:\n\n  > Error: getaddrinfo ENOTFOUND api.qualitestgroup.com\n\n-----------------------------------------------------------\n\nThe request we sent was:\n\nMethod: POST\nURL: https://api.qualitestgroup.com/api/applications\n\n-----------------------------------------------------------\n\nCommon situations why this would fail:\n  - you don't have internet access\n  - you forgot to run / boot your web server\n  - your web server isn't accessible\n  - you have weird network configuration settings on your computer\n\nhttps://on.cypress.io/request\n    at <unknown> (https://careers.qualitestgroup.com/__cypress/runner/cypress_runner.js:132904:70)\n    at tryCatcher (https://careers.qualitestgroup.com/__cypress/runner/cypress_runner.js:1830:23)\n    at <unknown> (https://careers.qualitestgroup.com/__cypress/runner/cypress_runner.js:4226:37)\n    at tryCatcher (https://careers.qualitestgroup.com/__cypress/runner/cypress_runner.js:1830:23)\n    at Promise._settlePromiseFromHandler (https://careers.qualitestgroup.com/__cypress/runner/cypress_runner.js:1542:31)\n    at Promise._settlePromise (https://careers.qualitestgroup.com/__cypress/runner/cypress_runner.js:1599:18)\n    at Promise._settlePromise0 (https://careers.qualitestgroup.com/__cypress/runner/cypress_runner.js:1644:10)\n    at Promise._settlePromises (https://careers.qualitestgroup.com/__cypress/runner/cypress_runner.js:1720:18)\n    at _drainQueueStep (https://careers.qualitestgroup.com/__cypress/runner/cypress_runner.js:2430:12)\n    at _drainQueue (https://careers.qualitestgroup.com/__cypress/runner/cypress_runner.js:2423:9)\n    at Async._drainQueues (https://careers.qualitestgroup.com/__cypress/runner/cypress_runner.js:2439:5)\n    at Async.drainQueues (https://careers.qualitestgroup.com/__cypress/runner/cypress_runner.js:2309:14)\nFrom Your Spec Code:\n    at Context.eval (webpack://cypress/./cypress/e2e/api_test.cy.js:73:9)\n\nFrom Node.js Internals:\n  RequestError: Error: getaddrinfo ENOTFOUND api.qualitestgroup.com\n      at new r (<embedded>:227:405020)\n      at ee.callback (<embedded>:227:411021)\n      at e.callback.s.callback [as _callback] (<embedded>:227:410467)\n      at s._callback.s.callback.s.callback (<embedded>:290:100275)\n      at ee.emit (node:events:514:28)\n      at ee.onRequestError (<embedded>:290:109217)\n      at ClientRequest.emit (node:events:526:35)\n      at TLSSocket.socketErrorListener (node:_http_client:501:9)\n      at TLSSocket.emit (node:events:514:28)\n      at emitErrorNT (node:internal/streams/destroy:151:8)\n      at emitErrorCloseNT (node:internal/streams/destroy:116:3)\n      at process.processTicksAndRejections (node:internal/process/task_queues:82:21)",
+                    "diff": null
+                  },
+                  "uuid": "75e850dd-25cc-4232-9cad-bc6b00ba5c93",
+                  "parentUUID": "2df5fd1d-c886-4beb-bd1b-c23ff72fafbd",
+                  "isHook": false,
+                  "skipped": false
+                },
+                {
+                  "title": "should handle 404 for non-existent job",
+                  "fullTitle": "API Testing Suite REST API Tests should handle 404 for non-existent job",
+                  "timedOut": null,
+                  "duration": 591,
+                  "state": "failed",
+                  "speed": null,
+                  "pass": false,
+                  "fail": true,
+                  "pending": false,
+                  "context": null,
+                  "code": "cy.request({\n  method: 'GET',\n  url: `${baseUrl}/api/jobs/99999999`,\n  headers: {\n    'Authorization': `Bearer ${apiKey}`,\n    'Content-Type': 'application/json'\n  },\n  failOnStatusCode: false\n}).then(response => {\n  expect(response.status).to.eq(404);\n  expect(response.body).to.have.property('error');\n  expect(response.body.error).to.include('Job not found');\n});",
+                  "err": {
+                    "message": "CypressError: `cy.request()` failed trying to load:\n\nhttps://api.qualitestgroup.com/api/jobs/99999999\n\nWe attempted to make an http request to this URL but the request failed without a response.\n\nWe received this error at the network level:\n\n  > Error: getaddrinfo ENOTFOUND api.qualitestgroup.com\n\n-----------------------------------------------------------\n\nThe request we sent was:\n\nMethod: GET\nURL: https://api.qualitestgroup.com/api/jobs/99999999\n\n-----------------------------------------------------------\n\nCommon situations why this would fail:\n  - you don't have internet access\n  - you forgot to run / boot your web server\n  - your web server isn't accessible\n  - you have weird network configuration settings on your computer\n\nhttps://on.cypress.io/request",
+                    "estack": "CypressError: `cy.request()` failed trying to load:\n\nhttps://api.qualitestgroup.com/api/jobs/99999999\n\nWe attempted to make an http request to this URL but the request failed without a response.\n\nWe received this error at the network level:\n\n  > Error: getaddrinfo ENOTFOUND api.qualitestgroup.com\n\n-----------------------------------------------------------\n\nThe request we sent was:\n\nMethod: GET\nURL: https://api.qualitestgroup.com/api/jobs/99999999\n\n-----------------------------------------------------------\n\nCommon situations why this would fail:\n  - you don't have internet access\n  - you forgot to run / boot your web server\n  - your web server isn't accessible\n  - you have weird network configuration settings on your computer\n\nhttps://on.cypress.io/request\n    at <unknown> (https://careers.qualitestgroup.com/__cypress/runner/cypress_runner.js:132904:70)\n    at tryCatcher (https://careers.qualitestgroup.com/__cypress/runner/cypress_runner.js:1830:23)\n    at <unknown> (https://careers.qualitestgroup.com/__cypress/runner/cypress_runner.js:4226:37)\n    at tryCatcher (https://careers.qualitestgroup.com/__cypress/runner/cypress_runner.js:1830:23)\n    at Promise._settlePromiseFromHandler (https://careers.qualitestgroup.com/__cypress/runner/cypress_runner.js:1542:31)\n    at Promise._settlePromise (https://careers.qualitestgroup.com/__cypress/runner/cypress_runner.js:1599:18)\n    at Promise._settlePromise0 (https://careers.qualitestgroup.com/__cypress/runner/cypress_runner.js:1644:10)\n    at Promise._settlePromises (https://careers.qualitestgroup.com/__cypress/runner/cypress_runner.js:1720:18)\n    at _drainQueueStep (https://careers.qualitestgroup.com/__cypress/runner/cypress_runner.js:2430:12)\n    at _drainQueue (https://careers.qualitestgroup.com/__cypress/runner/cypress_runner.js:2423:9)\n    at Async._drainQueues (https://careers.qualitestgroup.com/__cypress/runner/cypress_runner.js:2439:5)\n    at Async.drainQueues (https://careers.qualitestgroup.com/__cypress/runner/cypress_runner.js:2309:14)\nFrom Your Spec Code:\n    at Context.eval (webpack://cypress/./cypress/e2e/api_test.cy.js:90:9)\n\nFrom Node.js Internals:\n  RequestError: Error: getaddrinfo ENOTFOUND api.qualitestgroup.com\n      at new r (<embedded>:227:405020)\n      at ee.callback (<embedded>:227:411021)\n      at e.callback.s.callback [as _callback] (<embedded>:227:410467)\n      at s._callback.s.callback.s.callback (<embedded>:290:100275)\n      at ee.emit (node:events:514:28)\n      at ee.onRequestError (<embedded>:290:109217)\n      at ClientRequest.emit (node:events:526:35)\n      at TLSSocket.socketErrorListener (node:_http_client:501:9)\n      at TLSSocket.emit (node:events:514:28)\n      at emitErrorNT (node:internal/streams/destroy:151:8)\n      at emitErrorCloseNT (node:internal/streams/destroy:116:3)\n      at process.processTicksAndRejections (node:internal/process/task_queues:82:21)",
+                    "diff": null
+                  },
+                  "uuid": "27c02704-4763-4ce8-bbe4-3be24abed369",
+                  "parentUUID": "2df5fd1d-c886-4beb-bd1b-c23ff72fafbd",
+                  "isHook": false,
+                  "skipped": false
+                }
+              ],
+              "suites": [],
+              "passes": [],
+              "failures": [
+                "4fa3ab97-7259-44c9-a8bc-9b283f0a90b5",
+                "8968d8ab-6426-409e-9ae8-fa51b340d077",
+                "75e850dd-25cc-4232-9cad-bc6b00ba5c93",
+                "27c02704-4763-4ce8-bbe4-3be24abed369"
+              ],
+              "pending": [],
+              "skipped": [],
+              "duration": 2574,
+              "root": false,
+              "rootEmpty": false,
+              "_timeout": 2000
+            },
+            {
+              "uuid": "9ae422bc-faca-47e9-9b77-786a06b9be3b",
+              "title": "Authentication & Authorization Tests",
+              "fullFile": "",
+              "file": "",
+              "beforeHooks": [],
+              "afterHooks": [],
+              "tests": [
+                {
+                  "title": "should reject requests without API key",
+                  "fullTitle": "API Testing Suite Authentication & Authorization Tests should reject requests without API key",
+                  "timedOut": null,
+                  "duration": 623,
+                  "state": "failed",
+                  "speed": null,
+                  "pass": false,
+                  "fail": true,
+                  "pending": false,
+                  "context": null,
+                  "code": "cy.request({\n  method: 'GET',\n  url: `${baseUrl}/api/jobs`,\n  headers: {\n    'Content-Type': 'application/json'\n  },\n  failOnStatusCode: false\n}).then(response => {\n  expect(response.status).to.eq(401);\n  expect(response.body).to.have.property('error');\n  expect(response.body.error).to.include('Unauthorized');\n});",
+                  "err": {
+                    "message": "CypressError: `cy.request()` failed trying to load:\n\nhttps://api.qualitestgroup.com/api/jobs\n\nWe attempted to make an http request to this URL but the request failed without a response.\n\nWe received this error at the network level:\n\n  > Error: getaddrinfo ENOTFOUND api.qualitestgroup.com\n\n-----------------------------------------------------------\n\nThe request we sent was:\n\nMethod: GET\nURL: https://api.qualitestgroup.com/api/jobs\n\n-----------------------------------------------------------\n\nCommon situations why this would fail:\n  - you don't have internet access\n  - you forgot to run / boot your web server\n  - your web server isn't accessible\n  - you have weird network configuration settings on your computer\n\nhttps://on.cypress.io/request",
+                    "estack": "CypressError: `cy.request()` failed trying to load:\n\nhttps://api.qualitestgroup.com/api/jobs\n\nWe attempted to make an http request to this URL but the request failed without a response.\n\nWe received this error at the network level:\n\n  > Error: getaddrinfo ENOTFOUND api.qualitestgroup.com\n\n-----------------------------------------------------------\n\nThe request we sent was:\n\nMethod: GET\nURL: https://api.qualitestgroup.com/api/jobs\n\n-----------------------------------------------------------\n\nCommon situations why this would fail:\n  - you don't have internet access\n  - you forgot to run / boot your web server\n  - your web server isn't accessible\n  - you have weird network configuration settings on your computer\n\nhttps://on.cypress.io/request\n    at <unknown> (https://careers.qualitestgroup.com/__cypress/runner/cypress_runner.js:132904:70)\n    at tryCatcher (https://careers.qualitestgroup.com/__cypress/runner/cypress_runner.js:1830:23)\n    at <unknown> (https://careers.qualitestgroup.com/__cypress/runner/cypress_runner.js:4226:37)\n    at tryCatcher (https://careers.qualitestgroup.com/__cypress/runner/cypress_runner.js:1830:23)\n    at Promise._settlePromiseFromHandler (https://careers.qualitestgroup.com/__cypress/runner/cypress_runner.js:1542:31)\n    at Promise._settlePromise (https://careers.qualitestgroup.com/__cypress/runner/cypress_runner.js:1599:18)\n    at Promise._settlePromise0 (https://careers.qualitestgroup.com/__cypress/runner/cypress_runner.js:1644:10)\n    at Promise._settlePromises (https://careers.qualitestgroup.com/__cypress/runner/cypress_runner.js:1720:18)\n    at _drainQueueStep (https://careers.qualitestgroup.com/__cypress/runner/cypress_runner.js:2430:12)\n    at _drainQueue (https://careers.qualitestgroup.com/__cypress/runner/cypress_runner.js:2423:9)\n    at Async._drainQueues (https://careers.qualitestgroup.com/__cypress/runner/cypress_runner.js:2439:5)\n    at Async.drainQueues (https://careers.qualitestgroup.com/__cypress/runner/cypress_runner.js:2309:14)\nFrom Your Spec Code:\n    at Context.eval (webpack://cypress/./cypress/e2e/api_test.cy.js:108:9)\n\nFrom Node.js Internals:\n  RequestError: Error: getaddrinfo ENOTFOUND api.qualitestgroup.com\n      at new r (<embedded>:227:405020)\n      at ee.callback (<embedded>:227:411021)\n      at e.callback.s.callback [as _callback] (<embedded>:227:410467)\n      at s._callback.s.callback.s.callback (<embedded>:290:100275)\n      at ee.emit (node:events:514:28)\n      at ee.onRequestError (<embedded>:290:109217)\n      at ClientRequest.emit (node:events:526:35)\n      at TLSSocket.socketErrorListener (node:_http_client:501:9)\n      at TLSSocket.emit (node:events:514:28)\n      at emitErrorNT (node:internal/streams/destroy:151:8)\n      at emitErrorCloseNT (node:internal/streams/destroy:116:3)\n      at process.processTicksAndRejections (node:internal/process/task_queues:82:21)",
+                    "diff": null
+                  },
+                  "uuid": "acc61100-6cb9-479a-90a1-c4f46e67d424",
+                  "parentUUID": "9ae422bc-faca-47e9-9b77-786a06b9be3b",
+                  "isHook": false,
+                  "skipped": false
+                },
+                {
+                  "title": "should reject invalid API key",
+                  "fullTitle": "API Testing Suite Authentication & Authorization Tests should reject invalid API key",
+                  "timedOut": null,
+                  "duration": 607,
+                  "state": "failed",
+                  "speed": null,
+                  "pass": false,
+                  "fail": true,
+                  "pending": false,
+                  "context": null,
+                  "code": "cy.request({\n  method: 'GET',\n  url: `${baseUrl}/api/jobs`,\n  headers: {\n    'Authorization': 'Bearer invalid-key',\n    'Content-Type': 'application/json'\n  },\n  failOnStatusCode: false\n}).then(response => {\n  expect(response.status).to.eq(401);\n  expect(response.body).to.have.property('error');\n});",
+                  "err": {
+                    "message": "CypressError: `cy.request()` failed trying to load:\n\nhttps://api.qualitestgroup.com/api/jobs\n\nWe attempted to make an http request to this URL but the request failed without a response.\n\nWe received this error at the network level:\n\n  > Error: getaddrinfo ENOTFOUND api.qualitestgroup.com\n\n-----------------------------------------------------------\n\nThe request we sent was:\n\nMethod: GET\nURL: https://api.qualitestgroup.com/api/jobs\n\n-----------------------------------------------------------\n\nCommon situations why this would fail:\n  - you don't have internet access\n  - you forgot to run / boot your web server\n  - your web server isn't accessible\n  - you have weird network configuration settings on your computer\n\nhttps://on.cypress.io/request",
+                    "estack": "CypressError: `cy.request()` failed trying to load:\n\nhttps://api.qualitestgroup.com/api/jobs\n\nWe attempted to make an http request to this URL but the request failed without a response.\n\nWe received this error at the network level:\n\n  > Error: getaddrinfo ENOTFOUND api.qualitestgroup.com\n\n-----------------------------------------------------------\n\nThe request we sent was:\n\nMethod: GET\nURL: https://api.qualitestgroup.com/api/jobs\n\n-----------------------------------------------------------\n\nCommon situations why this would fail:\n  - you don't have internet access\n  - you forgot to run / boot your web server\n  - your web server isn't accessible\n  - you have weird network configuration settings on your computer\n\nhttps://on.cypress.io/request\n    at <unknown> (https://careers.qualitestgroup.com/__cypress/runner/cypress_runner.js:132904:70)\n    at tryCatcher (https://careers.qualitestgroup.com/__cypress/runner/cypress_runner.js:1830:23)\n    at <unknown> (https://careers.qualitestgroup.com/__cypress/runner/cypress_runner.js:4226:37)\n    at tryCatcher (https://careers.qualitestgroup.com/__cypress/runner/cypress_runner.js:1830:23)\n    at Promise._settlePromiseFromHandler (https://careers.qualitestgroup.com/__cypress/runner/cypress_runner.js:1542:31)\n    at Promise._settlePromise (https://careers.qualitestgroup.com/__cypress/runner/cypress_runner.js:1599:18)\n    at Promise._settlePromise0 (https://careers.qualitestgroup.com/__cypress/runner/cypress_runner.js:1644:10)\n    at Promise._settlePromises (https://careers.qualitestgroup.com/__cypress/runner/cypress_runner.js:1720:18)\n    at _drainQueueStep (https://careers.qualitestgroup.com/__cypress/runner/cypress_runner.js:2430:12)\n    at _drainQueue (https://careers.qualitestgroup.com/__cypress/runner/cypress_runner.js:2423:9)\n    at Async._drainQueues (https://careers.qualitestgroup.com/__cypress/runner/cypress_runner.js:2439:5)\n    at Async.drainQueues (https://careers.qualitestgroup.com/__cypress/runner/cypress_runner.js:2309:14)\nFrom Your Spec Code:\n    at Context.eval (webpack://cypress/./cypress/e2e/api_test.cy.js:123:9)\n\nFrom Node.js Internals:\n  RequestError: Error: getaddrinfo ENOTFOUND api.qualitestgroup.com\n      at new r (<embedded>:227:405020)\n      at ee.callback (<embedded>:227:411021)\n      at e.callback.s.callback [as _callback] (<embedded>:227:410467)\n      at s._callback.s.callback.s.callback (<embedded>:290:100275)\n      at ee.emit (node:events:514:28)\n      at ee.onRequestError (<embedded>:290:109217)\n      at ClientRequest.emit (node:events:526:35)\n      at TLSSocket.socketErrorListener (node:_http_client:501:9)\n      at TLSSocket.emit (node:events:514:28)\n      at emitErrorNT (node:internal/streams/destroy:151:8)\n      at emitErrorCloseNT (node:internal/streams/destroy:116:3)\n      at process.processTicksAndRejections (node:internal/process/task_queues:82:21)",
+                    "diff": null
+                  },
+                  "uuid": "8d867f7a-ece7-480d-ba03-896f432338fb",
+                  "parentUUID": "9ae422bc-faca-47e9-9b77-786a06b9be3b",
+                  "isHook": false,
+                  "skipped": false
+                }
+              ],
+              "suites": [],
+              "passes": [],
+              "failures": [
+                "acc61100-6cb9-479a-90a1-c4f46e67d424",
+                "8d867f7a-ece7-480d-ba03-896f432338fb"
+              ],
+              "pending": [],
+              "skipped": [],
+              "duration": 1230,
+              "root": false,
+              "rootEmpty": false,
+              "_timeout": 2000
+            },
+            {
+              "uuid": "51df3bfc-b7b5-4eaf-96c2-2b6dc97c49bc",
+              "title": "Data Validation Tests",
+              "fullFile": "",
+              "file": "",
+              "beforeHooks": [],
+              "afterHooks": [],
+              "tests": [
+                {
+                  "title": "should validate required fields in job application",
+                  "fullTitle": "API Testing Suite Data Validation Tests should validate required fields in job application",
+                  "timedOut": null,
+                  "duration": 703,
+                  "state": "failed",
+                  "speed": null,
+                  "pass": false,
+                  "fail": true,
+                  "pending": false,
+                  "context": null,
+                  "code": "const invalidApplication = {\n  jobId: '39414944',\n  // Missing required candidate data\n  coverLetter: 'Test cover letter'\n};\ncy.request({\n  method: 'POST',\n  url: `${baseUrl}/api/applications`,\n  headers: {\n    'Authorization': `Bearer ${apiKey}`,\n    'Content-Type': 'application/json'\n  },\n  body: invalidApplication,\n  failOnStatusCode: false\n}).then(response => {\n  expect(response.status).to.eq(400);\n  expect(response.body).to.have.property('errors');\n  expect(response.body.errors).to.be.an('array');\n  expect(response.body.errors).to.include('candidate is required');\n});",
+                  "err": {
+                    "message": "CypressError: `cy.request()` failed trying to load:\n\nhttps://api.qualitestgroup.com/api/applications\n\nWe attempted to make an http request to this URL but the request failed without a response.\n\nWe received this error at the network level:\n\n  > Error: getaddrinfo ENOTFOUND api.qualitestgroup.com\n\n-----------------------------------------------------------\n\nThe request we sent was:\n\nMethod: POST\nURL: https://api.qualitestgroup.com/api/applications\n\n-----------------------------------------------------------\n\nCommon situations why this would fail:\n  - you don't have internet access\n  - you forgot to run / boot your web server\n  - your web server isn't accessible\n  - you have weird network configuration settings on your computer\n\nhttps://on.cypress.io/request",
+                    "estack": "CypressError: `cy.request()` failed trying to load:\n\nhttps://api.qualitestgroup.com/api/applications\n\nWe attempted to make an http request to this URL but the request failed without a response.\n\nWe received this error at the network level:\n\n  > Error: getaddrinfo ENOTFOUND api.qualitestgroup.com\n\n-----------------------------------------------------------\n\nThe request we sent was:\n\nMethod: POST\nURL: https://api.qualitestgroup.com/api/applications\n\n-----------------------------------------------------------\n\nCommon situations why this would fail:\n  - you don't have internet access\n  - you forgot to run / boot your web server\n  - your web server isn't accessible\n  - you have weird network configuration settings on your computer\n\nhttps://on.cypress.io/request\n    at <unknown> (https://careers.qualitestgroup.com/__cypress/runner/cypress_runner.js:132904:70)\n    at tryCatcher (https://careers.qualitestgroup.com/__cypress/runner/cypress_runner.js:1830:23)\n    at <unknown> (https://careers.qualitestgroup.com/__cypress/runner/cypress_runner.js:4226:37)\n    at tryCatcher (https://careers.qualitestgroup.com/__cypress/runner/cypress_runner.js:1830:23)\n    at Promise._settlePromiseFromHandler (https://careers.qualitestgroup.com/__cypress/runner/cypress_runner.js:1542:31)\n    at Promise._settlePromise (https://careers.qualitestgroup.com/__cypress/runner/cypress_runner.js:1599:18)\n    at Promise._settlePromise0 (https://careers.qualitestgroup.com/__cypress/runner/cypress_runner.js:1644:10)\n    at Promise._settlePromises (https://careers.qualitestgroup.com/__cypress/runner/cypress_runner.js:1720:18)\n    at _drainQueueStep (https://careers.qualitestgroup.com/__cypress/runner/cypress_runner.js:2430:12)\n    at _drainQueue (https://careers.qualitestgroup.com/__cypress/runner/cypress_runner.js:2423:9)\n    at Async._drainQueues (https://careers.qualitestgroup.com/__cypress/runner/cypress_runner.js:2439:5)\n    at Async.drainQueues (https://careers.qualitestgroup.com/__cypress/runner/cypress_runner.js:2309:14)\nFrom Your Spec Code:\n    at Context.eval (webpack://cypress/./cypress/e2e/api_test.cy.js:146:9)\n\nFrom Node.js Internals:\n  RequestError: Error: getaddrinfo ENOTFOUND api.qualitestgroup.com\n      at new r (<embedded>:227:405020)\n      at ee.callback (<embedded>:227:411021)\n      at e.callback.s.callback [as _callback] (<embedded>:227:410467)\n      at s._callback.s.callback.s.callback (<embedded>:290:100275)\n      at ee.emit (node:events:514:28)\n      at ee.onRequestError (<embedded>:290:109217)\n      at ClientRequest.emit (node:events:526:35)\n      at TLSSocket.socketErrorListener (node:_http_client:501:9)\n      at TLSSocket.emit (node:events:514:28)\n      at emitErrorNT (node:internal/streams/destroy:151:8)\n      at emitErrorCloseNT (node:internal/streams/destroy:116:3)\n      at process.processTicksAndRejections (node:internal/process/task_queues:82:21)",
+                    "diff": null
+                  },
+                  "uuid": "5c811e2f-0f5d-4955-9f22-d0bba0c06c6f",
+                  "parentUUID": "51df3bfc-b7b5-4eaf-96c2-2b6dc97c49bc",
+                  "isHook": false,
+                  "skipped": false
+                },
+                {
+                  "title": "should validate email format",
+                  "fullTitle": "API Testing Suite Data Validation Tests should validate email format",
+                  "timedOut": null,
+                  "duration": 610,
+                  "state": "failed",
+                  "speed": null,
+                  "pass": false,
+                  "fail": true,
+                  "pending": false,
+                  "context": null,
+                  "code": "const applicationWithInvalidEmail = {\n  jobId: '39414944',\n  candidate: {\n    name: 'Test Candidate',\n    email: 'invalid-email',\n    phone: '+1234567890'\n  },\n  coverLetter: 'Test cover letter'\n};\ncy.request({\n  method: 'POST',\n  url: `${baseUrl}/api/applications`,\n  headers: {\n    'Authorization': `Bearer ${apiKey}`,\n    'Content-Type': 'application/json'\n  },\n  body: applicationWithInvalidEmail,\n  failOnStatusCode: false\n}).then(response => {\n  expect(response.status).to.eq(400);\n  expect(response.body.errors).to.include('Invalid email format');\n});",
+                  "err": {
+                    "message": "CypressError: `cy.request()` failed trying to load:\n\nhttps://api.qualitestgroup.com/api/applications\n\nWe attempted to make an http request to this URL but the request failed without a response.\n\nWe received this error at the network level:\n\n  > Error: getaddrinfo ENOTFOUND api.qualitestgroup.com\n\n-----------------------------------------------------------\n\nThe request we sent was:\n\nMethod: POST\nURL: https://api.qualitestgroup.com/api/applications\n\n-----------------------------------------------------------\n\nCommon situations why this would fail:\n  - you don't have internet access\n  - you forgot to run / boot your web server\n  - your web server isn't accessible\n  - you have weird network configuration settings on your computer\n\nhttps://on.cypress.io/request",
+                    "estack": "CypressError: `cy.request()` failed trying to load:\n\nhttps://api.qualitestgroup.com/api/applications\n\nWe attempted to make an http request to this URL but the request failed without a response.\n\nWe received this error at the network level:\n\n  > Error: getaddrinfo ENOTFOUND api.qualitestgroup.com\n\n-----------------------------------------------------------\n\nThe request we sent was:\n\nMethod: POST\nURL: https://api.qualitestgroup.com/api/applications\n\n-----------------------------------------------------------\n\nCommon situations why this would fail:\n  - you don't have internet access\n  - you forgot to run / boot your web server\n  - your web server isn't accessible\n  - you have weird network configuration settings on your computer\n\nhttps://on.cypress.io/request\n    at <unknown> (https://careers.qualitestgroup.com/__cypress/runner/cypress_runner.js:132904:70)\n    at tryCatcher (https://careers.qualitestgroup.com/__cypress/runner/cypress_runner.js:1830:23)\n    at <unknown> (https://careers.qualitestgroup.com/__cypress/runner/cypress_runner.js:4226:37)\n    at tryCatcher (https://careers.qualitestgroup.com/__cypress/runner/cypress_runner.js:1830:23)\n    at Promise._settlePromiseFromHandler (https://careers.qualitestgroup.com/__cypress/runner/cypress_runner.js:1542:31)\n    at Promise._settlePromise (https://careers.qualitestgroup.com/__cypress/runner/cypress_runner.js:1599:18)\n    at Promise._settlePromise0 (https://careers.qualitestgroup.com/__cypress/runner/cypress_runner.js:1644:10)\n    at Promise._settlePromises (https://careers.qualitestgroup.com/__cypress/runner/cypress_runner.js:1720:18)\n    at _drainQueueStep (https://careers.qualitestgroup.com/__cypress/runner/cypress_runner.js:2430:12)\n    at _drainQueue (https://careers.qualitestgroup.com/__cypress/runner/cypress_runner.js:2423:9)\n    at Async._drainQueues (https://careers.qualitestgroup.com/__cypress/runner/cypress_runner.js:2439:5)\n    at Async.drainQueues (https://careers.qualitestgroup.com/__cypress/runner/cypress_runner.js:2309:14)\nFrom Your Spec Code:\n    at Context.eval (webpack://cypress/./cypress/e2e/api_test.cy.js:174:9)\n\nFrom Node.js Internals:\n  RequestError: Error: getaddrinfo ENOTFOUND api.qualitestgroup.com\n      at new r (<embedded>:227:405020)\n      at ee.callback (<embedded>:227:411021)\n      at e.callback.s.callback [as _callback] (<embedded>:227:410467)\n      at s._callback.s.callback.s.callback (<embedded>:290:100275)\n      at ee.emit (node:events:514:28)\n      at ee.onRequestError (<embedded>:290:109217)\n      at ClientRequest.emit (node:events:526:35)\n      at TLSSocket.socketErrorListener (node:_http_client:501:9)\n      at TLSSocket.emit (node:events:514:28)\n      at emitErrorNT (node:internal/streams/destroy:151:8)\n      at emitErrorCloseNT (node:internal/streams/destroy:116:3)\n      at process.processTicksAndRejections (node:internal/process/task_queues:82:21)",
+                    "diff": null
+                  },
+                  "uuid": "74e22cb7-70b9-44f0-94ec-4d3df85e8f85",
+                  "parentUUID": "51df3bfc-b7b5-4eaf-96c2-2b6dc97c49bc",
+                  "isHook": false,
+                  "skipped": false
+                }
+              ],
+              "suites": [],
+              "passes": [],
+              "failures": [
+                "5c811e2f-0f5d-4955-9f22-d0bba0c06c6f",
+                "74e22cb7-70b9-44f0-94ec-4d3df85e8f85"
+              ],
+              "pending": [],
+              "skipped": [],
+              "duration": 1313,
+              "root": false,
+              "rootEmpty": false,
+              "_timeout": 2000
+            },
+            {
+              "uuid": "c41d9486-3522-4993-bcf6-ae10ccb667a2",
+              "title": "Performance & Load Tests",
+              "fullFile": "",
+              "file": "",
+              "beforeHooks": [],
+              "afterHooks": [],
+              "tests": [
+                {
+                  "title": "should respond within acceptable time",
+                  "fullTitle": "API Testing Suite Performance & Load Tests should respond within acceptable time",
+                  "timedOut": null,
+                  "duration": 606,
+                  "state": "failed",
+                  "speed": null,
+                  "pass": false,
+                  "fail": true,
+                  "pending": false,
+                  "context": null,
+                  "code": "cy.request({\n  method: 'GET',\n  url: `${baseUrl}/api/jobs`,\n  headers: {\n    'Authorization': `Bearer ${apiKey}`,\n    'Content-Type': 'application/json'\n  }\n}).then(response => {\n  expect(response.status).to.eq(200);\n  // Assert response time is under 2 seconds\n  expect(response.duration).to.be.lessThan(2000);\n});",
+                  "err": {
+                    "message": "CypressError: `cy.request()` failed trying to load:\n\nhttps://api.qualitestgroup.com/api/jobs\n\nWe attempted to make an http request to this URL but the request failed without a response.\n\nWe received this error at the network level:\n\n  > Error: getaddrinfo ENOTFOUND api.qualitestgroup.com\n\n-----------------------------------------------------------\n\nThe request we sent was:\n\nMethod: GET\nURL: https://api.qualitestgroup.com/api/jobs\n\n-----------------------------------------------------------\n\nCommon situations why this would fail:\n  - you don't have internet access\n  - you forgot to run / boot your web server\n  - your web server isn't accessible\n  - you have weird network configuration settings on your computer\n\nhttps://on.cypress.io/request",
+                    "estack": "CypressError: `cy.request()` failed trying to load:\n\nhttps://api.qualitestgroup.com/api/jobs\n\nWe attempted to make an http request to this URL but the request failed without a response.\n\nWe received this error at the network level:\n\n  > Error: getaddrinfo ENOTFOUND api.qualitestgroup.com\n\n-----------------------------------------------------------\n\nThe request we sent was:\n\nMethod: GET\nURL: https://api.qualitestgroup.com/api/jobs\n\n-----------------------------------------------------------\n\nCommon situations why this would fail:\n  - you don't have internet access\n  - you forgot to run / boot your web server\n  - your web server isn't accessible\n  - you have weird network configuration settings on your computer\n\nhttps://on.cypress.io/request\n    at <unknown> (https://careers.qualitestgroup.com/__cypress/runner/cypress_runner.js:132904:70)\n    at tryCatcher (https://careers.qualitestgroup.com/__cypress/runner/cypress_runner.js:1830:23)\n    at <unknown> (https://careers.qualitestgroup.com/__cypress/runner/cypress_runner.js:4226:37)\n    at tryCatcher (https://careers.qualitestgroup.com/__cypress/runner/cypress_runner.js:1830:23)\n    at Promise._settlePromiseFromHandler (https://careers.qualitestgroup.com/__cypress/runner/cypress_runner.js:1542:31)\n    at Promise._settlePromise (https://careers.qualitestgroup.com/__cypress/runner/cypress_runner.js:1599:18)\n    at Promise._settlePromise0 (https://careers.qualitestgroup.com/__cypress/runner/cypress_runner.js:1644:10)\n    at Promise._settlePromises (https://careers.qualitestgroup.com/__cypress/runner/cypress_runner.js:1720:18)\n    at _drainQueueStep (https://careers.qualitestgroup.com/__cypress/runner/cypress_runner.js:2430:12)\n    at _drainQueue (https://careers.qualitestgroup.com/__cypress/runner/cypress_runner.js:2423:9)\n    at Async._drainQueues (https://careers.qualitestgroup.com/__cypress/runner/cypress_runner.js:2439:5)\n    at Async.drainQueues (https://careers.qualitestgroup.com/__cypress/runner/cypress_runner.js:2309:14)\nFrom Your Spec Code:\n    at Context.eval (webpack://cypress/./cypress/e2e/api_test.cy.js:192:9)\n\nFrom Node.js Internals:\n  RequestError: Error: getaddrinfo ENOTFOUND api.qualitestgroup.com\n      at new r (<embedded>:227:405020)\n      at ee.callback (<embedded>:227:411021)\n      at e.callback.s.callback [as _callback] (<embedded>:227:410467)\n      at s._callback.s.callback.s.callback (<embedded>:290:100275)\n      at ee.emit (node:events:514:28)\n      at ee.onRequestError (<embedded>:290:109217)\n      at ClientRequest.emit (node:events:526:35)\n      at TLSSocket.socketErrorListener (node:_http_client:501:9)\n      at TLSSocket.emit (node:events:514:28)\n      at emitErrorNT (node:internal/streams/destroy:151:8)\n      at emitErrorCloseNT (node:internal/streams/destroy:116:3)\n      at process.processTicksAndRejections (node:internal/process/task_queues:82:21)",
+                    "diff": null
+                  },
+                  "uuid": "1a4b94fd-0563-4f52-b9bf-627982b7316c",
+                  "parentUUID": "c41d9486-3522-4993-bcf6-ae10ccb667a2",
+                  "isHook": false,
+                  "skipped": false
+                },
+                {
+                  "title": "should handle concurrent requests",
+                  "fullTitle": "API Testing Suite Performance & Load Tests should handle concurrent requests",
+                  "timedOut": null,
+                  "duration": 641,
+                  "state": "failed",
+                  "speed": null,
+                  "pass": false,
+                  "fail": true,
+                  "pending": false,
+                  "context": null,
+                  "code": "// Make multiple concurrent requests\nconst requests = [];\nfor (let i = 0; i < 5; i++) {\n  requests.push(cy.request({\n    method: 'GET',\n    url: `${baseUrl}/api/jobs`,\n    headers: {\n      'Authorization': `Bearer ${apiKey}`,\n      'Content-Type': 'application/json'\n    }\n  }));\n}\n// All requests should succeed\ncy.wrap(requests).each(request => {\n  request.then(response => {\n    expect(response.status).to.eq(200);\n  });\n});",
+                  "err": {
+                    "message": "CypressError: `cy.request()` failed trying to load:\n\nhttps://api.qualitestgroup.com/api/jobs\n\nWe attempted to make an http request to this URL but the request failed without a response.\n\nWe received this error at the network level:\n\n  > Error: getaddrinfo ENOTFOUND api.qualitestgroup.com\n\n-----------------------------------------------------------\n\nThe request we sent was:\n\nMethod: GET\nURL: https://api.qualitestgroup.com/api/jobs\n\n-----------------------------------------------------------\n\nCommon situations why this would fail:\n  - you don't have internet access\n  - you forgot to run / boot your web server\n  - your web server isn't accessible\n  - you have weird network configuration settings on your computer\n\nhttps://on.cypress.io/request",
+                    "estack": "CypressError: `cy.request()` failed trying to load:\n\nhttps://api.qualitestgroup.com/api/jobs\n\nWe attempted to make an http request to this URL but the request failed without a response.\n\nWe received this error at the network level:\n\n  > Error: getaddrinfo ENOTFOUND api.qualitestgroup.com\n\n-----------------------------------------------------------\n\nThe request we sent was:\n\nMethod: GET\nURL: https://api.qualitestgroup.com/api/jobs\n\n-----------------------------------------------------------\n\nCommon situations why this would fail:\n  - you don't have internet access\n  - you forgot to run / boot your web server\n  - your web server isn't accessible\n  - you have weird network configuration settings on your computer\n\nhttps://on.cypress.io/request\n    at <unknown> (https://careers.qualitestgroup.com/__cypress/runner/cypress_runner.js:132904:70)\n    at tryCatcher (https://careers.qualitestgroup.com/__cypress/runner/cypress_runner.js:1830:23)\n    at <unknown> (https://careers.qualitestgroup.com/__cypress/runner/cypress_runner.js:4226:37)\n    at tryCatcher (https://careers.qualitestgroup.com/__cypress/runner/cypress_runner.js:1830:23)\n    at Promise._settlePromiseFromHandler (https://careers.qualitestgroup.com/__cypress/runner/cypress_runner.js:1542:31)\n    at Promise._settlePromise (https://careers.qualitestgroup.com/__cypress/runner/cypress_runner.js:1599:18)\n    at Promise._settlePromise0 (https://careers.qualitestgroup.com/__cypress/runner/cypress_runner.js:1644:10)\n    at Promise._settlePromises (https://careers.qualitestgroup.com/__cypress/runner/cypress_runner.js:1720:18)\n    at _drainQueueStep (https://careers.qualitestgroup.com/__cypress/runner/cypress_runner.js:2430:12)\n    at _drainQueue (https://careers.qualitestgroup.com/__cypress/runner/cypress_runner.js:2423:9)\n    at Async._drainQueues (https://careers.qualitestgroup.com/__cypress/runner/cypress_runner.js:2439:5)\n    at Async.drainQueues (https://careers.qualitestgroup.com/__cypress/runner/cypress_runner.js:2309:14)\nFrom Your Spec Code:\n    at Context.eval (webpack://cypress/./cypress/e2e/api_test.cy.js:211:13)\n\nFrom Node.js Internals:\n  RequestError: Error: getaddrinfo ENOTFOUND api.qualitestgroup.com\n      at new r (<embedded>:227:405020)\n      at ee.callback (<embedded>:227:411021)\n      at e.callback.s.callback [as _callback] (<embedded>:227:410467)\n      at s._callback.s.callback.s.callback (<embedded>:290:100275)\n      at ee.emit (node:events:514:28)\n      at ee.onRequestError (<embedded>:290:109217)\n      at ClientRequest.emit (node:events:526:35)\n      at TLSSocket.socketErrorListener (node:_http_client:501:9)\n      at TLSSocket.emit (node:events:514:28)\n      at emitErrorNT (node:internal/streams/destroy:151:8)\n      at emitErrorCloseNT (node:internal/streams/destroy:116:3)\n      at process.processTicksAndRejections (node:internal/process/task_queues:82:21)",
+                    "diff": null
+                  },
+                  "uuid": "d2caab17-92f8-4dbc-a389-17a28533a08b",
+                  "parentUUID": "c41d9486-3522-4993-bcf6-ae10ccb667a2",
+                  "isHook": false,
+                  "skipped": false
+                }
+              ],
+              "suites": [],
+              "passes": [],
+              "failures": [
+                "1a4b94fd-0563-4f52-b9bf-627982b7316c",
+                "d2caab17-92f8-4dbc-a389-17a28533a08b"
+              ],
+              "pending": [],
+              "skipped": [],
+              "duration": 1247,
+              "root": false,
+              "rootEmpty": false,
+              "_timeout": 2000
+            }
+          ],
+          "passes": [],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 0,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.0.1"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": true,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.3"
+    },
+    "marge": {
+      "options": {
+        "reportDir": "cypress/reports",
+        "overwrite": false,
+        "html": true,
+        "json": true,
+        "charts": true,
+        "reportPageTitle": "Cypress Test Results",
+        "embeddedScreenshots": true,
+        "inlineAssets": true,
+        "saveAllAttempts": false
+      },
+      "version": "6.2.0"
+    }
+  }
+}
