@@ -1,4 +1,4 @@
-name: Cypress Tests
+name: Cypress Component Tests
 
 on:
   push:
@@ -7,7 +7,7 @@ on:
     branches: [ main, master ]
 
 jobs:
-  cypress-run:
+  cypress-component:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -28,40 +28,40 @@ jobs:
       - name: Ensure reports directory exists
         run: mkdir -p cypress/reports
 
-      - name: Run E2E Cypress tests with reporting and record to Cypress Cloud
-        run: npm run test:report -- --record --key ${{ secrets.CYPRESS_RECORD_KEY }}
+      - name: Run Component tests
+        run: npm run test:component:report
 
-      - name: Generate HTML report
+      - name: Generate Component HTML report
         run: |
           if [ -f cypress/reports/*.json ]; then
             npm run report:merge
             npm run report:generate
           else
-            echo "No test reports found to merge"
-            echo '{"stats":{"passes":0,"failures":0,"duration":0},"results":[]}' > cypress/reports/output.json
+            echo "No component test reports found to merge"
+            echo '{"stats":{"passes":0,"failures":0,"duration":0},"results":[]}' > cypress/reports/component-output.json
           fi
         if: always()
 
-      - name: Upload screenshots
+      - name: Upload component screenshots
         uses: actions/upload-artifact@v4
         if: failure()
         with:
-          name: cypress-screenshots
+          name: cypress-component-screenshots
           path: cypress/screenshots
           if-no-files-found: ignore
 
-      - name: Upload videos
+      - name: Upload component videos
         uses: actions/upload-artifact@v4
         if: always()
         with:
-          name: cypress-videos
+          name: cypress-component-videos
           path: cypress/videos
           if-no-files-found: ignore
 
-      - name: Upload HTML report
+      - name: Upload component HTML report
         uses: actions/upload-artifact@v4
         if: always()
         with:
-          name: cypress-html-report
+          name: cypress-component-html-report
           path: cypress/reports/
           if-no-files-found: ignore 
