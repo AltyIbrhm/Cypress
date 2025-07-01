@@ -13,6 +13,7 @@
     "test:component:open": "cypress open --component",
     "test:component:report": "cypress run --component --reporter mochawesome",
     "test:all": "npm run test && npm run test:component",
+    "test:all:report": "npm run test:report && npm run test:component:report",
     "report:merge": "npx mochawesome-merge cypress/reports/*.json > cypress/reports/output.json",
     "report:generate": "npx marge cypress/reports/output.json -f report -o cypress/reports",
     "report:full": "npm run test:report && npm run report:merge && npm run report:generate",
