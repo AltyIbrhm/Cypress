@@ -1,0 +1,110 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 1,
+    "passes": 1,
+    "pending": 0,
+    "failures": 0,
+    "start": "2025-07-01T01:09:17.182Z",
+    "end": "2025-07-01T01:09:21.395Z",
+    "duration": 4213,
+    "testsRegistered": 1,
+    "passPercent": 100,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "30a47336-f122-46c5-9d28-76b6c3b3804d",
+      "title": "",
+      "fullFile": "cypress\\e2e\\qualitest_job.cy.js",
+      "file": "cypress\\e2e\\qualitest_job.cy.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "00cf12a7-eb25-42a6-bea4-c6dcbfff8ae7",
+          "title": "Qualitest Automation Lead Job Page",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "should display the job title",
+              "fullTitle": "Qualitest Automation Lead Job Page should display the job title",
+              "timedOut": null,
+              "duration": 4158,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.on('uncaught:exception', (err, runnable) => {\n  // returning false here prevents Cypress from failing the test\n  return false;\n});\ncy.visit('https://careers.qualitestgroup.com/job/Santa-Clara-Automation-Lead-CA-95054/39414944/', {\n  failOnStatusCode: false\n});\ncy.contains('Automation Lead', {\n  timeout: 20000\n}).should('be.visible');",
+              "err": {},
+              "uuid": "43e2827b-e174-4b2d-b6ec-3a40f0b0d152",
+              "parentUUID": "00cf12a7-eb25-42a6-bea4-c6dcbfff8ae7",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "43e2827b-e174-4b2d-b6ec-3a40f0b0d152"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 4158,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.0.1"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": true,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.3"
+    },
+    "marge": {
+      "options": {
+        "reportDir": "cypress/reports",
+        "overwrite": false,
+        "html": true,
+        "json": true,
+        "charts": true,
+        "reportPageTitle": "Cypress Test Results",
+        "embeddedScreenshots": true,
+        "inlineAssets": true,
+        "saveAllAttempts": false
+      },
+      "version": "6.2.0"
+    }
+  }
+}
