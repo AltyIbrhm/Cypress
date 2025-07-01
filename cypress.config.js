@@ -27,8 +27,8 @@ module.exports = defineConfig({
       framework: 'react',
       bundler: 'webpack'
     },
-    supportFile: 'cypress/support/commands.js',
-    indexHtmlPath: 'cypress/component/component-index.html',
+    supportFile: 'cypress/support/component.js',
+    indexHtmlPath: 'cypress/support/component-index.html',
     specPattern: 'cypress/component/**/*.cy.{js,jsx,ts,tsx}'
   }
 });
