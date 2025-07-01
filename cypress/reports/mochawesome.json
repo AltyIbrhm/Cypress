@@ -1,0 +1,360 @@
+{
+  "stats": {
+    "suites": 5,
+    "tests": 10,
+    "passes": 10,
+    "pending": 0,
+    "failures": 0,
+    "start": "2025-07-01T17:40:34.493Z",
+    "end": "2025-07-01T17:40:35.112Z",
+    "duration": 619,
+    "testsRegistered": 10,
+    "passPercent": 100,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "8037fc55-2f59-4cfb-8a7b-130fb9d464b0",
+      "title": "",
+      "fullFile": "cypress\\e2e\\api_test.cy.js",
+      "file": "cypress\\e2e\\api_test.cy.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "78ea1ce6-204b-4475-8432-78d79cdde642",
+          "title": "API Testing Suite",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [],
+          "suites": [
+            {
+              "uuid": "092c4f56-27bc-4cc2-ba64-eac946e6b6d4",
+              "title": "REST API Tests",
+              "fullFile": "",
+              "file": "",
+              "beforeHooks": [],
+              "afterHooks": [],
+              "tests": [
+                {
+                  "title": "should GET posts list successfully",
+                  "fullTitle": "API Testing Suite REST API Tests should GET posts list successfully",
+                  "timedOut": null,
+                  "duration": 136,
+                  "state": "passed",
+                  "speed": "fast",
+                  "pass": true,
+                  "fail": false,
+                  "pending": false,
+                  "context": null,
+                  "code": "cy.request({\n  method: 'GET',\n  url: `${baseUrl}/posts`,\n  headers: {\n    'Content-Type': 'application/json'\n  }\n}).then(response => {\n  // Assert response status\n  expect(response.status).to.eq(200);\n  // Assert response structure\n  expect(response.body).to.be.an('array');\n  // Assert response data\n  expect(response.body).to.have.length.greaterThan(0);\n  // Check if posts have required properties\n  expect(response.body[0]).to.have.property('id');\n  expect(response.body[0]).to.have.property('title');\n  expect(response.body[0]).to.have.property('body');\n  expect(response.body[0]).to.have.property('userId');\n});",
+                  "err": {},
+                  "uuid": "34fe6655-34d7-42bc-a80c-ce49a0c577f3",
+                  "parentUUID": "092c4f56-27bc-4cc2-ba64-eac946e6b6d4",
+                  "isHook": false,
+                  "skipped": false
+                },
+                {
+                  "title": "should GET specific post by ID",
+                  "fullTitle": "API Testing Suite REST API Tests should GET specific post by ID",
+                  "timedOut": null,
+                  "duration": 39,
+                  "state": "passed",
+                  "speed": "fast",
+                  "pass": true,
+                  "fail": false,
+                  "pending": false,
+                  "context": null,
+                  "code": "const postId = '1';\ncy.request({\n  method: 'GET',\n  url: `${baseUrl}/posts/${postId}`,\n  headers: {\n    'Content-Type': 'application/json'\n  }\n}).then(response => {\n  expect(response.status).to.eq(200);\n  expect(response.body).to.have.property('id', 1);\n  expect(response.body).to.have.property('title');\n  expect(response.body).to.have.property('body');\n  expect(response.body).to.have.property('userId');\n});",
+                  "err": {},
+                  "uuid": "3b182e42-aadc-4502-807d-480406f02fcd",
+                  "parentUUID": "092c4f56-27bc-4cc2-ba64-eac946e6b6d4",
+                  "isHook": false,
+                  "skipped": false
+                },
+                {
+                  "title": "should POST new post",
+                  "fullTitle": "API Testing Suite REST API Tests should POST new post",
+                  "timedOut": null,
+                  "duration": 48,
+                  "state": "passed",
+                  "speed": "fast",
+                  "pass": true,
+                  "fail": false,
+                  "pending": false,
+                  "context": null,
+                  "code": "const postData = {\n  title: 'Test Post Title',\n  body: 'This is a test post body for API testing',\n  userId: 1\n};\ncy.request({\n  method: 'POST',\n  url: `${baseUrl}/posts`,\n  headers: {\n    'Content-Type': 'application/json'\n  },\n  body: postData\n}).then(response => {\n  expect(response.status).to.eq(201);\n  expect(response.body).to.have.property('id');\n  expect(response.body).to.have.property('title', postData.title);\n  expect(response.body).to.have.property('body', postData.body);\n  expect(response.body).to.have.property('userId', postData.userId);\n});",
+                  "err": {},
+                  "uuid": "896e3d9d-a69c-446b-bd15-767f0a200095",
+                  "parentUUID": "092c4f56-27bc-4cc2-ba64-eac946e6b6d4",
+                  "isHook": false,
+                  "skipped": false
+                },
+                {
+                  "title": "should handle 404 for non-existent post",
+                  "fullTitle": "API Testing Suite REST API Tests should handle 404 for non-existent post",
+                  "timedOut": null,
+                  "duration": 30,
+                  "state": "passed",
+                  "speed": "fast",
+                  "pass": true,
+                  "fail": false,
+                  "pending": false,
+                  "context": null,
+                  "code": "cy.request({\n  method: 'GET',\n  url: `${baseUrl}/posts/99999999`,\n  headers: {\n    'Content-Type': 'application/json'\n  },\n  failOnStatusCode: false\n}).then(response => {\n  expect(response.status).to.eq(404);\n  expect(response.body).to.be.empty;\n});",
+                  "err": {},
+                  "uuid": "5a827b63-da8c-49e1-b0a0-d634f1d53f7e",
+                  "parentUUID": "092c4f56-27bc-4cc2-ba64-eac946e6b6d4",
+                  "isHook": false,
+                  "skipped": false
+                }
+              ],
+              "suites": [],
+              "passes": [
+                "34fe6655-34d7-42bc-a80c-ce49a0c577f3",
+                "3b182e42-aadc-4502-807d-480406f02fcd",
+                "896e3d9d-a69c-446b-bd15-767f0a200095",
+                "5a827b63-da8c-49e1-b0a0-d634f1d53f7e"
+              ],
+              "failures": [],
+              "pending": [],
+              "skipped": [],
+              "duration": 253,
+              "root": false,
+              "rootEmpty": false,
+              "_timeout": 2000
+            },
+            {
+              "uuid": "f212cd3e-b32e-46fa-9e48-197d87ca6aaf",
+              "title": "Authentication & Authorization Tests",
+              "fullFile": "",
+              "file": "",
+              "beforeHooks": [],
+              "afterHooks": [],
+              "tests": [
+                {
+                  "title": "should handle requests without authentication (public API)",
+                  "fullTitle": "API Testing Suite Authentication & Authorization Tests should handle requests without authentication (public API)",
+                  "timedOut": null,
+                  "duration": 57,
+                  "state": "passed",
+                  "speed": "fast",
+                  "pass": true,
+                  "fail": false,
+                  "pending": false,
+                  "context": null,
+                  "code": "cy.request({\n  method: 'GET',\n  url: `${baseUrl}/posts`,\n  headers: {\n    'Content-Type': 'application/json'\n  }\n}).then(response => {\n  expect(response.status).to.eq(200);\n  expect(response.body).to.be.an('array');\n});",
+                  "err": {},
+                  "uuid": "a5b1eef3-5347-40fc-864d-dc63c9ba064f",
+                  "parentUUID": "f212cd3e-b32e-46fa-9e48-197d87ca6aaf",
+                  "isHook": false,
+                  "skipped": false
+                },
+                {
+                  "title": "should handle requests with custom headers",
+                  "fullTitle": "API Testing Suite Authentication & Authorization Tests should handle requests with custom headers",
+                  "timedOut": null,
+                  "duration": 29,
+                  "state": "passed",
+                  "speed": "fast",
+                  "pass": true,
+                  "fail": false,
+                  "pending": false,
+                  "context": null,
+                  "code": "cy.request({\n  method: 'GET',\n  url: `${baseUrl}/posts/1`,\n  headers: {\n    'Content-Type': 'application/json',\n    'X-Custom-Header': 'test-value'\n  }\n}).then(response => {\n  expect(response.status).to.eq(200);\n  expect(response.body).to.have.property('id', 1);\n});",
+                  "err": {},
+                  "uuid": "751c4476-89c9-40f8-a114-7ff326841fbf",
+                  "parentUUID": "f212cd3e-b32e-46fa-9e48-197d87ca6aaf",
+                  "isHook": false,
+                  "skipped": false
+                }
+              ],
+              "suites": [],
+              "passes": [
+                "a5b1eef3-5347-40fc-864d-dc63c9ba064f",
+                "751c4476-89c9-40f8-a114-7ff326841fbf"
+              ],
+              "failures": [],
+              "pending": [],
+              "skipped": [],
+              "duration": 86,
+              "root": false,
+              "rootEmpty": false,
+              "_timeout": 2000
+            },
+            {
+              "uuid": "5156d4a4-fd8d-47f1-b57c-6397bc07340a",
+              "title": "Data Validation Tests",
+              "fullFile": "",
+              "file": "",
+              "beforeHooks": [],
+              "afterHooks": [],
+              "tests": [
+                {
+                  "title": "should validate post data structure",
+                  "fullTitle": "API Testing Suite Data Validation Tests should validate post data structure",
+                  "timedOut": null,
+                  "duration": 49,
+                  "state": "passed",
+                  "speed": "fast",
+                  "pass": true,
+                  "fail": false,
+                  "pending": false,
+                  "context": null,
+                  "code": "const validPost = {\n  title: 'Valid Post Title',\n  body: 'Valid post body content',\n  userId: 1\n};\ncy.request({\n  method: 'POST',\n  url: `${baseUrl}/posts`,\n  headers: {\n    'Content-Type': 'application/json'\n  },\n  body: validPost\n}).then(response => {\n  expect(response.status).to.eq(201);\n  expect(response.body).to.have.property('id');\n  expect(response.body.title).to.eq(validPost.title);\n  expect(response.body.body).to.eq(validPost.body);\n  expect(response.body.userId).to.eq(validPost.userId);\n});",
+                  "err": {},
+                  "uuid": "7bf0debd-8fc0-4ee9-9a99-9053603124dc",
+                  "parentUUID": "5156d4a4-fd8d-47f1-b57c-6397bc07340a",
+                  "isHook": false,
+                  "skipped": false
+                },
+                {
+                  "title": "should handle missing required fields gracefully",
+                  "fullTitle": "API Testing Suite Data Validation Tests should handle missing required fields gracefully",
+                  "timedOut": null,
+                  "duration": 32,
+                  "state": "passed",
+                  "speed": "fast",
+                  "pass": true,
+                  "fail": false,
+                  "pending": false,
+                  "context": null,
+                  "code": "const incompletePost = {\n  title: 'Incomplete Post'\n  // Missing body and userId\n};\ncy.request({\n  method: 'POST',\n  url: `${baseUrl}/posts`,\n  headers: {\n    'Content-Type': 'application/json'\n  },\n  body: incompletePost\n}).then(response => {\n  // JSONPlaceholder doesn't validate, so it returns 201\n  expect(response.status).to.eq(201);\n  expect(response.body).to.have.property('id');\n});",
+                  "err": {},
+                  "uuid": "b333290b-2a55-4252-a318-e9ddab2e3179",
+                  "parentUUID": "5156d4a4-fd8d-47f1-b57c-6397bc07340a",
+                  "isHook": false,
+                  "skipped": false
+                }
+              ],
+              "suites": [],
+              "passes": [
+                "7bf0debd-8fc0-4ee9-9a99-9053603124dc",
+                "b333290b-2a55-4252-a318-e9ddab2e3179"
+              ],
+              "failures": [],
+              "pending": [],
+              "skipped": [],
+              "duration": 81,
+              "root": false,
+              "rootEmpty": false,
+              "_timeout": 2000
+            },
+            {
+              "uuid": "f7702071-4d2d-4fe7-b26a-cda25bd9332e",
+              "title": "Performance & Load Tests",
+              "fullFile": "",
+              "file": "",
+              "beforeHooks": [],
+              "afterHooks": [],
+              "tests": [
+                {
+                  "title": "should respond within acceptable time",
+                  "fullTitle": "API Testing Suite Performance & Load Tests should respond within acceptable time",
+                  "timedOut": null,
+                  "duration": 37,
+                  "state": "passed",
+                  "speed": "fast",
+                  "pass": true,
+                  "fail": false,
+                  "pending": false,
+                  "context": null,
+                  "code": "cy.request({\n  method: 'GET',\n  url: `${baseUrl}/posts`,\n  headers: {\n    'Content-Type': 'application/json'\n  }\n}).then(response => {\n  expect(response.status).to.eq(200);\n  // Assert response time is under 5 seconds\n  expect(response.duration).to.be.lessThan(5000);\n});",
+                  "err": {},
+                  "uuid": "190949a9-222e-4387-bcfe-748dc91a4714",
+                  "parentUUID": "f7702071-4d2d-4fe7-b26a-cda25bd9332e",
+                  "isHook": false,
+                  "skipped": false
+                },
+                {
+                  "title": "should handle multiple sequential requests",
+                  "fullTitle": "API Testing Suite Performance & Load Tests should handle multiple sequential requests",
+                  "timedOut": null,
+                  "duration": 76,
+                  "state": "passed",
+                  "speed": "fast",
+                  "pass": true,
+                  "fail": false,
+                  "pending": false,
+                  "context": null,
+                  "code": "// Make multiple sequential requests instead of concurrent\ncy.request({\n  method: 'GET',\n  url: `${baseUrl}/posts/1`,\n  headers: {\n    'Content-Type': 'application/json'\n  }\n}).then(response => {\n  expect(response.status).to.eq(200);\n});\ncy.request({\n  method: 'GET',\n  url: `${baseUrl}/posts/2`,\n  headers: {\n    'Content-Type': 'application/json'\n  }\n}).then(response => {\n  expect(response.status).to.eq(200);\n});\ncy.request({\n  method: 'GET',\n  url: `${baseUrl}/posts/3`,\n  headers: {\n    'Content-Type': 'application/json'\n  }\n}).then(response => {\n  expect(response.status).to.eq(200);\n});",
+                  "err": {},
+                  "uuid": "8fe90c8f-b3a8-470e-b3f9-0ecfaff68ecb",
+                  "parentUUID": "f7702071-4d2d-4fe7-b26a-cda25bd9332e",
+                  "isHook": false,
+                  "skipped": false
+                }
+              ],
+              "suites": [],
+              "passes": [
+                "190949a9-222e-4387-bcfe-748dc91a4714",
+                "8fe90c8f-b3a8-470e-b3f9-0ecfaff68ecb"
+              ],
+              "failures": [],
+              "pending": [],
+              "skipped": [],
+              "duration": 113,
+              "root": false,
+              "rootEmpty": false,
+              "_timeout": 2000
+            }
+          ],
+          "passes": [],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 0,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.0.1"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": true,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.3"
+    },
+    "marge": {
+      "options": {
+        "reportDir": "cypress/reports",
+        "overwrite": false,
+        "html": true,
+        "json": true,
+        "charts": true,
+        "reportPageTitle": "Cypress Test Results",
+        "embeddedScreenshots": true,
+        "inlineAssets": true,
+        "saveAllAttempts": false
+      },
+      "version": "6.2.0"
+    }
+  }
+}

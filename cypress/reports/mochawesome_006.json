@@ -1,0 +1,137 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 2,
+    "passes": 0,
+    "pending": 0,
+    "failures": 2,
+    "start": "2025-07-01T17:42:10.383Z",
+    "end": "2025-07-01T17:42:18.024Z",
+    "duration": 7641,
+    "testsRegistered": 2,
+    "passPercent": 0,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "5cc7ef1d-4455-49c9-9110-aedf840455d5",
+      "title": "",
+      "fullFile": "cypress\\e2e\\qualitest_home.cy.js",
+      "file": "cypress\\e2e\\qualitest_home.cy.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "e1263d33-1d96-4384-92f0-adf7c67e1c3d",
+          "title": "Qualitest Careers Home Page",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "should display the Qualitest brand text",
+              "fullTitle": "Qualitest Careers Home Page should display the Qualitest brand text",
+              "timedOut": null,
+              "duration": 4835,
+              "state": "failed",
+              "speed": null,
+              "pass": false,
+              "fail": true,
+              "pending": false,
+              "context": null,
+              "code": "// Use custom command for robust external website testing\ncy.visitExternal('https://careers.qualitestgroup.com/');\n// Wait for page to be ready\ncy.waitForPageLoad();\n// Check for Qualitest text with fallback\ncy.checkForText('Qualitest', 'careers');",
+              "err": {
+                "message": "TypeError: Cannot read properties of undefined (reading 'on')",
+                "estack": "TypeError: Cannot read properties of undefined (reading 'on')\n    at HTMLDocument.<anonymous> (https://careers.qualitestgroup.com/platform/js/j2w/j2w.bootstrap.dropdown.js:50:68)\n    at e (https://careers.qualitestgroup.com/platform/js/jquery/jquery-3.5.1.min.js:2:30005)\n    at t (https://careers.qualitestgroup.com/platform/js/jquery/jquery-3.5.1.min.js:2:30307)\n    at o (https://careers.qualitestgroup.com/:4:465)\n    at https://careers.qualitestgroup.com/:4:838",
+                "diff": null
+              },
+              "uuid": "17c3ae2a-39c4-48ca-a2d8-85fba9a13dfc",
+              "parentUUID": "e1263d33-1d96-4384-92f0-adf7c67e1c3d",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "should load the careers page successfully",
+              "fullTitle": "Qualitest Careers Home Page should load the careers page successfully",
+              "timedOut": null,
+              "duration": 2756,
+              "state": "failed",
+              "speed": null,
+              "pass": false,
+              "fail": true,
+              "pending": false,
+              "context": null,
+              "code": "// Use custom command for robust external website testing\ncy.visitExternal('https://careers.qualitestgroup.com/');\n// Wait for page to be ready\ncy.waitForPageLoad();\n// Log page title for debugging\ncy.title().then(title => {\n  cy.log(`Page title: ${title}`);\n});",
+              "err": {
+                "message": "TypeError: Cannot read properties of undefined (reading 'on')",
+                "estack": "TypeError: Cannot read properties of undefined (reading 'on')\n    at HTMLDocument.<anonymous> (https://careers.qualitestgroup.com/platform/js/j2w/j2w.bootstrap.dropdown.js:50:68)\n    at e (https://careers.qualitestgroup.com/platform/js/jquery/jquery-3.5.1.min.js:2:30005)\n    at t (https://careers.qualitestgroup.com/platform/js/jquery/jquery-3.5.1.min.js:2:30307)\n    at o (https://careers.qualitestgroup.com/:4:465)\n    at https://careers.qualitestgroup.com/:4:838",
+                "diff": null
+              },
+              "uuid": "e9bfada2-676c-4fd9-83ba-d36c07df3cad",
+              "parentUUID": "e1263d33-1d96-4384-92f0-adf7c67e1c3d",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [],
+          "failures": [
+            "17c3ae2a-39c4-48ca-a2d8-85fba9a13dfc",
+            "e9bfada2-676c-4fd9-83ba-d36c07df3cad"
+          ],
+          "pending": [],
+          "skipped": [],
+          "duration": 7591,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.0.1"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": true,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.3"
+    },
+    "marge": {
+      "options": {
+        "reportDir": "cypress/reports",
+        "overwrite": false,
+        "html": true,
+        "json": true,
+        "charts": true,
+        "reportPageTitle": "Cypress Test Results",
+        "embeddedScreenshots": true,
+        "inlineAssets": true,
+        "saveAllAttempts": false
+      },
+      "version": "6.2.0"
+    }
+  }
+}

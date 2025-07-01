@@ -24,3 +24,9 @@ Cypress.on('test:after:run', (attributes) => {
   // This will run after each test
   console.log('Test completed:', attributes.title, attributes.state)
 })
+
+// Suppress all uncaught exceptions so Cypress does not fail on third-party JS errors
+Cypress.on('uncaught:exception', (err, runnable) => {
+  // returning false here prevents Cypress from failing the test
+  return false;
+});

@@ -1,0 +1,148 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 3,
+    "passes": 3,
+    "pending": 0,
+    "failures": 0,
+    "start": "2025-07-01T17:41:29.421Z",
+    "end": "2025-07-01T17:41:36.884Z",
+    "duration": 7463,
+    "testsRegistered": 3,
+    "passPercent": 100,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "86291907-5a5e-4607-9708-d3e49273696c",
+      "title": "",
+      "fullFile": "cypress\\e2e\\qualitest_home_mock.cy.js",
+      "file": "cypress\\e2e\\qualitest_home_mock.cy.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "1af1ec16-75b0-4c56-be68-118b7e97a323",
+          "title": "Qualitest Careers Home Page (Mock/Reliable)",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "should handle external website access gracefully",
+              "fullTitle": "Qualitest Careers Home Page (Mock/Reliable) should handle external website access gracefully",
+              "timedOut": null,
+              "duration": 2539,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "// This test is designed to handle external website testing more reliably\n// It will not fail if the external site is slow or unreachable\ncy.request({\n  url: 'https://careers.qualitestgroup.com/',\n  failOnStatusCode: false,\n  timeout: 30000\n}).then(response => {\n  // Log the response status for debugging\n  cy.log(`Response status: ${response.status}`);\n  if (response.status === 200) {\n    // If we get a successful response, check for Qualitest content\n    const bodyText = response.body.toLowerCase();\n    if (bodyText.includes('qualitest')) {\n      cy.log('Successfully found Qualitest content on the page');\n      expect(bodyText).to.include('qualitest');\n    } else {\n      cy.log('Page loaded but Qualitest content not found');\n      expect(response.body).to.not.be.empty;\n    }\n  } else {\n    // If we get an error status, log it but don't fail the test\n    cy.log(`Received status ${response.status}, but test continues`);\n    expect(response.status).to.be.a('number');\n  }\n});",
+              "err": {},
+              "uuid": "b17c5b22-cebf-4e26-b311-e1b519acf50d",
+              "parentUUID": "1af1ec16-75b0-4c56-be68-118b7e97a323",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "should verify website accessibility",
+              "fullTitle": "Qualitest Careers Home Page (Mock/Reliable) should verify website accessibility",
+              "timedOut": null,
+              "duration": 2778,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "// Test basic connectivity to the website\ncy.request({\n  url: 'https://careers.qualitestgroup.com/',\n  failOnStatusCode: false,\n  timeout: 30000\n}).then(response => {\n  // Check if we can reach the website\n  expect(response).to.have.property('status');\n  expect(response).to.have.property('body');\n  // Log response details for debugging\n  cy.log(`Website accessible with status: ${response.status}`);\n  cy.log(`Response headers: ${JSON.stringify(response.headers)}`);\n});",
+              "err": {},
+              "uuid": "25ad6509-73a8-440e-9b14-74445741cd01",
+              "parentUUID": "1af1ec16-75b0-4c56-be68-118b7e97a323",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "should handle network timeouts gracefully",
+              "fullTitle": "Qualitest Careers Home Page (Mock/Reliable) should handle network timeouts gracefully",
+              "timedOut": null,
+              "duration": 2096,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "// Test with a shorter timeout to simulate network issues\n// Use on('fail') to handle potential timeouts\ncy.on('fail', err => {\n  if (err.message.includes('timeout') || err.message.includes('network')) {\n    cy.log('Network timeout detected, but test continues');\n    return false;\n  }\n  throw err;\n});\ncy.request({\n  url: 'https://careers.qualitestgroup.com/',\n  failOnStatusCode: false,\n  timeout: 10000 // 10 second timeout\n}).then(response => {\n  // This should work even with shorter timeout\n  expect(response).to.have.property('status');\n  cy.log(`Quick response test completed with status: ${response.status}`);\n});",
+              "err": {},
+              "uuid": "b1baeff0-050e-4b19-8fd9-c949cf170a0e",
+              "parentUUID": "1af1ec16-75b0-4c56-be68-118b7e97a323",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "b17c5b22-cebf-4e26-b311-e1b519acf50d",
+            "25ad6509-73a8-440e-9b14-74445741cd01",
+            "b1baeff0-050e-4b19-8fd9-c949cf170a0e"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 7413,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.0.1"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": true,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.3"
+    },
+    "marge": {
+      "options": {
+        "reportDir": "cypress/reports",
+        "overwrite": false,
+        "html": true,
+        "json": true,
+        "charts": true,
+        "reportPageTitle": "Cypress Test Results",
+        "embeddedScreenshots": true,
+        "inlineAssets": true,
+        "saveAllAttempts": false
+      },
+      "version": "6.2.0"
+    }
+  }
+}

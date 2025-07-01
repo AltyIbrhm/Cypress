@@ -1,0 +1,172 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 4,
+    "passes": 3,
+    "pending": 0,
+    "failures": 1,
+    "start": "2025-07-01T17:40:49.062Z",
+    "end": "2025-07-01T17:40:53.005Z",
+    "duration": 3943,
+    "testsRegistered": 4,
+    "passPercent": 75,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "30a278f8-f968-49a0-aefc-11d7850c8a84",
+      "title": "",
+      "fullFile": "cypress\\e2e\\qualitest_job_mock.cy.js",
+      "file": "cypress\\e2e\\qualitest_job_mock.cy.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "bde81b14-ff85-4b3a-93f1-c3e3091feb9c",
+          "title": "Qualitest Automation Lead Job Page (Mock/Reliable)",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "should handle job page access gracefully",
+              "fullTitle": "Qualitest Automation Lead Job Page (Mock/Reliable) should handle job page access gracefully",
+              "timedOut": null,
+              "duration": 1023,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "// This test is designed to handle external job page testing more reliably\n// It will not fail if the external site is slow or unreachable\ncy.request({\n  url: 'https://careers.qualitestgroup.com/job/Santa-Clara-Automation-Lead-CA-95054/39414944/',\n  failOnStatusCode: false,\n  timeout: 30000\n}).then(response => {\n  // Log the response status for debugging\n  cy.log(`Response status: ${response.status}`);\n  if (response.status === 200) {\n    // If we get a successful response, check for job content\n    const bodyText = response.body.toLowerCase();\n    if (bodyText.includes('automation lead')) {\n      cy.log('Successfully found Automation Lead content on the page');\n      expect(bodyText).to.include('automation lead');\n    } else if (bodyText.includes('automation')) {\n      cy.log('Found partial job title match');\n      expect(bodyText).to.include('automation');\n    } else {\n      cy.log('Page loaded but job content not found');\n      expect(response.body).to.not.be.empty;\n    }\n  } else {\n    // If we get an error status, log it but don't fail the test\n    cy.log(`Received status ${response.status}, but test continues`);\n    expect(response.status).to.be.a('number');\n  }\n});",
+              "err": {},
+              "uuid": "0590d2ba-8ef8-4dac-b6e1-4599ff64108f",
+              "parentUUID": "bde81b14-ff85-4b3a-93f1-c3e3091feb9c",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "should verify job page accessibility",
+              "fullTitle": "Qualitest Automation Lead Job Page (Mock/Reliable) should verify job page accessibility",
+              "timedOut": null,
+              "duration": 779,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "// Test basic connectivity to the job page\ncy.request({\n  url: 'https://careers.qualitestgroup.com/job/Santa-Clara-Automation-Lead-CA-95054/39414944/',\n  failOnStatusCode: false,\n  timeout: 30000\n}).then(response => {\n  // Check if we can reach the job page\n  expect(response).to.have.property('status');\n  expect(response).to.have.property('body');\n  // Log response details for debugging\n  cy.log(`Job page accessible with status: ${response.status}`);\n  // Check for common job page elements\n  if (response.status === 200) {\n    const bodyText = response.body.toLowerCase();\n    const jobKeywords = ['responsibilities', 'requirements', 'qualifications', 'experience', 'skills'];\n    const foundKeywords = jobKeywords.filter(keyword => bodyText.includes(keyword));\n    if (foundKeywords.length > 0) {\n      cy.log(`Found job description keywords: ${foundKeywords.join(', ')}`);\n    } else {\n      cy.log('No standard job description keywords found');\n    }\n  }\n});",
+              "err": {},
+              "uuid": "e0e58ba5-192c-4235-89b1-679f5a9e7509",
+              "parentUUID": "bde81b14-ff85-4b3a-93f1-c3e3091feb9c",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "should handle network timeouts gracefully",
+              "fullTitle": "Qualitest Automation Lead Job Page (Mock/Reliable) should handle network timeouts gracefully",
+              "timedOut": null,
+              "duration": 60,
+              "state": "failed",
+              "speed": null,
+              "pass": false,
+              "fail": true,
+              "pending": false,
+              "context": null,
+              "code": "// Test with a shorter timeout to simulate network issues\ncy.request({\n  url: 'https://careers.qualitestgroup.com/job/Santa-Clara-Automation-Lead-CA-95054/39414944/',\n  failOnStatusCode: false,\n  timeout: 10000 // 10 second timeout\n}).then(response => {\n  // This should work even with shorter timeout\n  expect(response).to.have.property('status');\n  cy.log(`Quick response test completed with status: ${response.status}`);\n}).catch(error => {\n  // If there's an error, log it but don't fail\n  cy.log(`Network timeout test completed with error: ${error.message}`);\n  expect(error).to.be.an('error');\n});",
+              "err": {
+                "message": "TypeError: cy.request(...).then(...).catch is not a function",
+                "estack": "TypeError: cy.request(...).then(...).catch is not a function\n    at Context.eval (webpack://cypress/./cypress/e2e/qualitest_job_mock.cy.js:74:14)",
+                "diff": null
+              },
+              "uuid": "901f21dd-7d71-4e2b-afeb-1df9131ef4c1",
+              "parentUUID": "bde81b14-ff85-4b3a-93f1-c3e3091feb9c",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "should verify company information presence",
+              "fullTitle": "Qualitest Automation Lead Job Page (Mock/Reliable) should verify company information presence",
+              "timedOut": null,
+              "duration": 2017,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "// Test for company information on the job page\ncy.request({\n  url: 'https://careers.qualitestgroup.com/job/Santa-Clara-Automation-Lead-CA-95054/39414944/',\n  failOnStatusCode: false,\n  timeout: 30000\n}).then(response => {\n  if (response.status === 200) {\n    const bodyText = response.body.toLowerCase();\n    if (bodyText.includes('qualitest')) {\n      cy.log('Successfully found Qualitest company information');\n      expect(bodyText).to.include('qualitest');\n    } else {\n      cy.log('Company information not found, but page loaded successfully');\n      expect(response.body).to.not.be.empty;\n    }\n  } else {\n    cy.log(`Received status ${response.status}, but test continues`);\n    expect(response.status).to.be.a('number');\n  }\n});",
+              "err": {},
+              "uuid": "f51b0ea1-3194-4313-83d3-5fc8364c4050",
+              "parentUUID": "bde81b14-ff85-4b3a-93f1-c3e3091feb9c",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "0590d2ba-8ef8-4dac-b6e1-4599ff64108f",
+            "e0e58ba5-192c-4235-89b1-679f5a9e7509",
+            "f51b0ea1-3194-4313-83d3-5fc8364c4050"
+          ],
+          "failures": [
+            "901f21dd-7d71-4e2b-afeb-1df9131ef4c1"
+          ],
+          "pending": [],
+          "skipped": [],
+          "duration": 3879,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.0.1"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": true,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.3"
+    },
+    "marge": {
+      "options": {
+        "reportDir": "cypress/reports",
+        "overwrite": false,
+        "html": true,
+        "json": true,
+        "charts": true,
+        "reportPageTitle": "Cypress Test Results",
+        "embeddedScreenshots": true,
+        "inlineAssets": true,
+        "saveAllAttempts": false
+      },
+      "version": "6.2.0"
+    }
+  }
+}
