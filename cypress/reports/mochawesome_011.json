@@ -1,0 +1,186 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 5,
+    "passes": 5,
+    "pending": 0,
+    "failures": 0,
+    "start": "2025-07-01T00:27:36.544Z",
+    "end": "2025-07-01T00:27:36.646Z",
+    "duration": 102,
+    "testsRegistered": 5,
+    "passPercent": 100,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "7de68a8e-a915-4948-bb48-cee9ed9cc848",
+      "title": "",
+      "fullFile": "cypress\\component\\JobHeader.cy.js",
+      "file": "cypress\\component\\JobHeader.cy.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "08705b3e-6444-428d-81fe-8cdea067ca80",
+          "title": "JobHeader Component",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "should render job title correctly",
+              "fullTitle": "JobHeader Component should render job title correctly",
+              "timedOut": null,
+              "duration": 35,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.get('[data-cy=\"job-title\"]').should('be.visible').and('contain.text', 'Automation Lead');",
+              "err": {},
+              "uuid": "f703d113-709b-4c3f-a121-f3261c7a4afc",
+              "parentUUID": "08705b3e-6444-428d-81fe-8cdea067ca80",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "should display all job metadata",
+              "fullTitle": "JobHeader Component should display all job metadata",
+              "timedOut": null,
+              "duration": 15,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.get('[data-cy=\"job-date\"]').should('contain.text', '4 Jun 2025');\ncy.get('[data-cy=\"job-company\"]').should('contain.text', 'Qualitest Group');\ncy.get('[data-cy=\"job-location\"]').should('contain.text', 'US (remote from anywhere in the US - EST)');\ncy.get('[data-cy=\"job-salary\"]').should('contain.text', '$110,000 - $125,000 USD annually');",
+              "err": {},
+              "uuid": "2114fbf9-15f1-4fd3-9c46-41765963edf3",
+              "parentUUID": "08705b3e-6444-428d-81fe-8cdea067ca80",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "should handle missing salary gracefully",
+              "fullTitle": "JobHeader Component should handle missing salary gracefully",
+              "timedOut": null,
+              "duration": 12,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "var propsWithoutSalary = _objectSpread({}, defaultProps);\ndelete propsWithoutSalary.salary;\ncy.mount(/*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_src_components_JobHeader__WEBPACK_IMPORTED_MODULE_1__[\"default\"], propsWithoutSalary));\ncy.get('[data-cy=\"job-salary\"]').should('not.exist');",
+              "err": {},
+              "uuid": "dc9b9780-fc29-4265-8dd0-c6dc92841d79",
+              "parentUUID": "08705b3e-6444-428d-81fe-8cdea067ca80",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "should have proper heading structure",
+              "fullTitle": "JobHeader Component should have proper heading structure",
+              "timedOut": null,
+              "duration": 8,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.get('[data-cy=\"job-title\"]').should('have.prop', 'tagName', 'H1');",
+              "err": {},
+              "uuid": "a041efc1-b6a5-4c6b-bccb-ea51473cfd6b",
+              "parentUUID": "08705b3e-6444-428d-81fe-8cdea067ca80",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "should be accessible",
+              "fullTitle": "JobHeader Component should be accessible",
+              "timedOut": null,
+              "duration": 10,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.get('[data-cy=\"job-header\"]').should('be.visible');\ncy.get('[data-cy=\"job-title\"]').should('have.attr', 'data-cy');",
+              "err": {},
+              "uuid": "e19d401a-a570-4540-ba9b-18275c7c9c59",
+              "parentUUID": "08705b3e-6444-428d-81fe-8cdea067ca80",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "f703d113-709b-4c3f-a121-f3261c7a4afc",
+            "2114fbf9-15f1-4fd3-9c46-41765963edf3",
+            "dc9b9780-fc29-4265-8dd0-c6dc92841d79",
+            "a041efc1-b6a5-4c6b-bccb-ea51473cfd6b",
+            "e19d401a-a570-4540-ba9b-18275c7c9c59"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 80,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.0.1"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": true,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.3"
+    },
+    "marge": {
+      "options": {
+        "reportDir": "cypress/reports",
+        "overwrite": false,
+        "html": true,
+        "json": true,
+        "charts": true,
+        "reportPageTitle": "Cypress Component Test Results",
+        "embeddedScreenshots": true,
+        "inlineAssets": true,
+        "saveAllAttempts": false
+      },
+      "version": "6.2.0"
+    }
+  }
+}

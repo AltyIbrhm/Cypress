@@ -29,6 +29,18 @@ module.exports = defineConfig({
     },
     supportFile: 'cypress/support/component.js',
     indexHtmlPath: 'cypress/support/component-index.html',
-    specPattern: 'cypress/component/**/*.cy.{js,jsx,ts,tsx}'
+    specPattern: 'cypress/component/**/*.cy.{js,jsx,ts,tsx}',
+    reporter: 'mochawesome',
+    reporterOptions: {
+      reportDir: 'cypress/reports',
+      overwrite: false,
+      html: true,
+      json: true,
+      charts: true,
+      reportPageTitle: 'Cypress Component Test Results',
+      embeddedScreenshots: true,
+      inlineAssets: true,
+      saveAllAttempts: false
+    }
   }
 });

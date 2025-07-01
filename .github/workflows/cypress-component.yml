@@ -25,10 +25,20 @@ jobs:
       - name: Ensure reports directory exists
         run: mkdir -p cypress/reports
 
+      - name: Debug - List files
+        run: |
+          echo "Current directory: $(pwd)"
+          echo "Listing cypress directory:"
+          ls -la cypress/
+          echo "Listing component directory:"
+          ls -la cypress/component/
+
       - name: Run Component tests
         uses: cypress-io/github-action@v6
         with:
           command: npm run test:component:report
+          wait-on: 'http://localhost:8080'
+          wait-on-timeout: 120
 
       - name: Generate Component HTML report
         run: |

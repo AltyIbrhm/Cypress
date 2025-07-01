@@ -1,0 +1,195 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 6,
+    "passes": 6,
+    "pending": 0,
+    "failures": 0,
+    "start": "2025-07-01T00:26:51.795Z",
+    "end": "2025-07-01T00:26:56.114Z",
+    "duration": 4319,
+    "testsRegistered": 6,
+    "passPercent": 100,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "d990eda8-f732-4b27-8606-98d328bc84e5",
+      "title": "",
+      "fullFile": "cypress\\component\\JobPage.cy.js",
+      "file": "cypress\\component\\JobPage.cy.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "623bf7d0-b7c1-4a8b-8519-7a718a40a115",
+          "title": "Complete Job Page Components",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "should render complete job page with all components",
+              "fullTitle": "Complete Job Page Components should render complete job page with all components",
+              "timedOut": null,
+              "duration": 59,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "// Check JobHeader\ncy.get('[data-cy=\"job-title\"]').should('contain.text', 'Automation Lead');\ncy.get('[data-cy=\"job-company\"]').should('contain.text', 'Qualitest Group');\ncy.get('[data-cy=\"job-salary\"]').should('contain.text', '$110,000 - $125,000 USD annually');\n// Check JobDescription\ncy.get('[data-cy=\"description-text\"]').should('contain.text', 'AI-powered Quality Engineering Company');\ncy.get('[data-cy=\"responsibilities\"]').should('be.visible');\ncy.get('[data-cy=\"requirements\"]').should('be.visible');\ncy.get('[data-cy=\"nice-to-have\"]').should('be.visible');\n// Check ApplyButton\ncy.get('[data-cy=\"apply-button\"]').should('contain.text', 'Apply Now');\n// Check CompanyBenefits\ncy.get('[data-cy=\"company-benefits\"] h3').should('contain.text', 'Why QualiTest?');\ncy.get('[data-cy=\"company-benefits\"] ul li').should('have.length', 11);",
+              "err": {},
+              "uuid": "d983d6eb-38f7-4287-b1a4-250fcc0e6db2",
+              "parentUUID": "623bf7d0-b7c1-4a8b-8519-7a718a40a115",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "should allow complete job application flow",
+              "fullTitle": "Complete Job Page Components should allow complete job application flow",
+              "timedOut": null,
+              "duration": 2076,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "// Verify initial state\ncy.get('[data-cy=\"apply-button\"]').should('contain.text', 'Apply Now').and('not.be.disabled');\n// Start application\ncy.get('[data-cy=\"apply-button\"]').click();\n// Check loading state\ncy.get('[data-cy=\"apply-button\"]').should('contain.text', 'Applying...').and('be.disabled');\n// Check success state\ncy.get('[data-cy=\"apply-button\"]', {\n  timeout: 3000\n}).should('contain.text', 'Applied!').and('be.disabled');\ncy.get('[data-cy=\"application-status\"]').should('contain.text', 'Application submitted successfully!');",
+              "err": {},
+              "uuid": "4228e79e-d9fe-430b-9e4e-5a352aea48f3",
+              "parentUUID": "623bf7d0-b7c1-4a8b-8519-7a718a40a115",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "should display all job requirements correctly",
+              "fullTitle": "Complete Job Page Components should display all job requirements correctly",
+              "timedOut": null,
+              "duration": 19,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "// Check responsibilities\ncy.get('[data-cy=\"responsibility-0\"]').should('contain.text', 'Lead the automation efforts using Cypress');\ncy.get('[data-cy=\"responsibility-3\"]').should('contain.text', 'Contribute to CI/CD pipelines');\ncy.get('[data-cy=\"responsibility-6\"]').should('contain.text', 'Participate in sprint planning');\n// Check requirements\ncy.get('[data-cy=\"requirement-0\"]').should('contain.text', '6+ years of experience in test automation');\ncy.get('[data-cy=\"requirement-3\"]').should('contain.text', 'Hands-on experience with CI/CD tools');\ncy.get('[data-cy=\"requirement-6\"]').should('contain.text', 'Excellent communication and problem-solving skills');\n// Check nice to have\ncy.get('[data-cy=\"nice-to-have-0\"]').should('contain.text', 'Experience with tools like TestRail');\ncy.get('[data-cy=\"nice-to-have-2\"]').should('contain.text', 'Exposure to Salesforce testing environments');",
+              "err": {},
+              "uuid": "58a4b0d5-36cd-4240-938c-319a516a7d15",
+              "parentUUID": "623bf7d0-b7c1-4a8b-8519-7a718a40a115",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "should display all company benefits",
+              "fullTitle": "Complete Job Page Components should display all company benefits",
+              "timedOut": null,
+              "duration": 14,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "// Check specific benefits\ncy.get('[data-cy=\"benefit-0\"]').should('contain.text', 'diversity and inclusion');\ncy.get('[data-cy=\"benefit-4\"]').should('contain.text', '401k plan');\ncy.get('[data-cy=\"benefit-6\"]').should('contain.text', 'Qualitest Tech academy');\ncy.get('[data-cy=\"benefit-8\"]').should('contain.text', 'Salary of 110,000 - $125,000 USD annually');\ncy.get('[data-cy=\"benefit-10\"]').should('contain.text', 'Qualitest Employee Perks');",
+              "err": {},
+              "uuid": "5eb4fff2-57a0-45ef-8952-d9b4df9e41ca",
+              "parentUUID": "623bf7d0-b7c1-4a8b-8519-7a718a40a115",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "should have proper page structure and accessibility",
+              "fullTitle": "Complete Job Page Components should have proper page structure and accessibility",
+              "timedOut": null,
+              "duration": 20,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "// Check all main sections are present\ncy.get('[data-cy=\"job-header\"]').should('be.visible');\ncy.get('[data-cy=\"job-description\"]').should('be.visible');\ncy.get('[data-cy=\"apply-section\"]').should('be.visible');\ncy.get('[data-cy=\"company-benefits\"]').should('be.visible');\n// Check proper heading hierarchy\ncy.get('[data-cy=\"job-title\"]').should('have.prop', 'tagName', 'H1');\ncy.get('[data-cy=\"responsibilities\"] h3').should('be.visible');\ncy.get('[data-cy=\"requirements\"] h3').should('be.visible');\ncy.get('[data-cy=\"nice-to-have\"] h3').should('be.visible');\ncy.get('[data-cy=\"company-benefits\"] h3').should('be.visible');",
+              "err": {},
+              "uuid": "e180d182-829e-4fa7-842f-051871775454",
+              "parentUUID": "623bf7d0-b7c1-4a8b-8519-7a718a40a115",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "should handle component interactions without conflicts",
+              "fullTitle": "Complete Job Page Components should handle component interactions without conflicts",
+              "timedOut": null,
+              "duration": 2064,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "// Apply for the job\ncy.get('[data-cy=\"apply-button\"]').click();\ncy.get('[data-cy=\"apply-button\"]', {\n  timeout: 3000\n}).should('contain.text', 'Applied!');\n// Verify other components are still functional\ncy.get('[data-cy=\"job-title\"]').should('contain.text', 'Automation Lead');\ncy.get('[data-cy=\"company-benefits\"]').should('be.visible');\ncy.get('[data-cy=\"responsibilities\"]').should('be.visible');",
+              "err": {},
+              "uuid": "3bb2f5a4-6c46-4abb-98db-54086cf8a065",
+              "parentUUID": "623bf7d0-b7c1-4a8b-8519-7a718a40a115",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "d983d6eb-38f7-4287-b1a4-250fcc0e6db2",
+            "4228e79e-d9fe-430b-9e4e-5a352aea48f3",
+            "58a4b0d5-36cd-4240-938c-319a516a7d15",
+            "5eb4fff2-57a0-45ef-8952-d9b4df9e41ca",
+            "e180d182-829e-4fa7-842f-051871775454",
+            "3bb2f5a4-6c46-4abb-98db-54086cf8a065"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 4252,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.0.1"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": true,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.3"
+    },
+    "marge": {
+      "options": null,
+      "version": "6.2.0"
+    }
+  }
+}
