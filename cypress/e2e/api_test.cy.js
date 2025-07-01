@@ -1,4 +1,4 @@
-describe('API Testing Suite', () => {
+describe('API Testing Suite1', () => {
   const baseUrl = 'https://jsonplaceholder.typicode.com'; // Real test API
   const apiKey = Cypress.env('API_KEY') || 'your-api-key-here';
   
