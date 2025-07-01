@@ -18,6 +18,10 @@ module.exports = defineConfig({
       inlineAssets: true,
       saveAllAttempts: false
     },
+    pageLoadTimeout: 120000, // 2 minutes
+    requestTimeout: 60000,   // 1 minute
+    responseTimeout: 60000,  // 1 minute
+    defaultCommandTimeout: 30000, // 30 seconds
     setupNodeEvents(on, config) {
       // implement node event listeners here
       require('./cypress/plugins/database.js')(on, config);
