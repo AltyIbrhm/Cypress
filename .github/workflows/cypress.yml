@@ -22,14 +22,17 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
+      - name: Install Cypress
+        run: npx cypress install
+
       - name: Ensure reports directory exists
         run: mkdir -p cypress/reports
 
       - name: Run E2E Cypress tests with reporting and record to Cypress Cloud
-        run: npm run test:report -- --record --key ${{ secrets.CYPRESS_RECORD_KEY }}
+        run: npx cypress run --reporter mochawesome --record --key ${{ secrets.CYPRESS_RECORD_KEY }}
 
       - name: Run Component tests
-        run: npm run test:component:report
+        run: npx cypress run --component --reporter mochawesome
         if: always()
 
       - name: Generate HTML report
